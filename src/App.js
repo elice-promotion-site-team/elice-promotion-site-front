@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
   // const sendRequest = async () => {
-  //   const response = await axios.get(`http://localhost:3001`); //PORT 수정 필요
+  //   const response = await axios.get(`http://localhost:3001`); //domain 수정 필요
   //   console.log(response);
   //   console.log(response.data);
   // };
