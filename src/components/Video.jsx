@@ -8,9 +8,9 @@ const Video = ({ id }) => {
         height="615"
         src={`https://www.youtube.com/embed/${id}`} //?autoplay=1&mute=1
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
       ></iframe>
     </div>
   );
