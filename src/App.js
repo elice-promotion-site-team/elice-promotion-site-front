@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 // import axios from 'axios';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import mainBackground from '../src/assets/main_background.png';
 import mainCategory1 from '../src/assets/main01-1.png';
@@ -21,14 +22,23 @@ function App() {
   //   sendRequest();
   // });
   return (
-    <div className="mainContainer">
-      <img src={mainBackground} className="mainbg" />
-      <img src={mainCategory1} className="mainct ct1" />
-      <img src={mainCategory2} className="mainct ct2" />
-      <img src={mainCategory3} className="mainct ct3" />
-      <img src={mainCategory4} className="mainct ct4" />
-      <TrackInfo />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="mainContainer">
+            <img src={mainBackground} className="mainbg" alt="" />
+            <a href="/trackinfo">
+              <img src={mainCategory1} className="mainct ct1" alt="트랙소개" />
+            </a>
+            <img src={mainCategory2} className="mainct ct2" alt="" />
+            <img src={mainCategory3} className="mainct ct3" alt="" />
+            <img src={mainCategory4} className="mainct ct4" alt="" />
+          </div>
+        }
+      ></Route>
+      <Route path="/trackinfo" element={<TrackInfo />} />
+    </Routes>
   );
 }
 
