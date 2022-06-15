@@ -4,6 +4,7 @@ import Nav from './Nav';
 import styled from 'styled-components';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
+import curriculumImage from '../assets/track_info/curriculum.png';
 const TrackInfo = () => {
   return (
     <div>
@@ -43,6 +44,12 @@ const TrackInfo = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </SectionContainer>
+        <SectionContainer>
+          <div>
+            <h3>실무에서 가장 많이 쓰는 스택을 위주로 학습합니다</h3>
+            <img src={curriculumImage} alt="커리큘럼" />
           </div>
         </SectionContainer>
       </main>
