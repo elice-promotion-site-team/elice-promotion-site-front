@@ -3,13 +3,12 @@
 }
 
 .mainContainer {
-  position: relative;
   width: 100%;
 }
 
 .mainbg {
-  position: absolute;
   width: 100%;
+  position: relative;
   height: auto;
 }
 
@@ -36,10 +35,10 @@
   left: 220px;
 }
 
-@media only screen and (max-width: 480p) {
+@media only screen and (max-width: 992px) {
   .mainContainer {
     position: relative;
-    width: 470px;
+    width: 100%;
   }
 
   .mainbg {
@@ -47,28 +46,4 @@
     width: 100%;
     height: auto;
   }
-  
-  .mainct {
-    width: 25vw;
-    position: absolute;
-    cursor: pointer;
-  }
-  
-  .ct1 {
-    top: 120px;
-    right: 140px;
-  }
-  .ct2 {
-    top: 450px;
-    left: 530px;
-  }
-  .ct3 {
-    top: 1300px;
-    right: 360px;
-  }
-  .ct4 {
-    top: 1450px;
-    left: 220px;
-  }
-  
 }
