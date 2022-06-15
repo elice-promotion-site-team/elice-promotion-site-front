@@ -1,7 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
 // import { useEffect } from 'react';
 // import axios from 'axios';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import mainBackground from '../src/assets/main_background.png';
+import mainCategory1 from '../src/assets/main01-1.png';
+import mainCategory2 from '../src/assets/main02-1.png';
+import mainCategory3 from '../src/assets/main03-1.png';
+import mainCategory4 from '../src/assets/main04-1.png';
+import TrackInfo from './components/TrackInfo';
 
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
@@ -15,17 +22,23 @@ function App() {
   //   sendRequest();
   // });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="mainContainer">
+            <img src={mainBackground} className="mainbg" alt="" />
+            <a href="/trackinfo">
+              <img src={mainCategory1} className="mainct ct1" alt="트랙소개" />
+            </a>
+            <img src={mainCategory2} className="mainct ct2" alt="" />
+            <img src={mainCategory3} className="mainct ct3" alt="" />
+            <img src={mainCategory4} className="mainct ct4" alt="" />
+          </div>
+        }
+      ></Route>
+      <Route path="/trackinfo" element={<TrackInfo />} />
+    </Routes>
   );
 }
 
