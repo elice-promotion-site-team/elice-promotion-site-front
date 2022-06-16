@@ -1,7 +1,7 @@
 // import { useEffect } from 'react';
 // import axios from 'axios';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav';
 
@@ -15,6 +15,7 @@ import mainCategory02 from '../src/assets/main02-2.png';
 import mainCategory03 from '../src/assets/main03-2.png';
 import mainCategory04 from '../src/assets/main04-2.png';
 import TrackInfo from './components/TrackInfo';
+import GuestBook from './components/GuestBook';
 
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
@@ -60,6 +61,7 @@ function App() {
           }
         ></Route>
         <Route path="/trackinfo" element={<TrackInfo />} />
+        <Route path="/guestbook" element={<GuestBook />} />
       </Routes>
     </Router>
   );
