@@ -1,21 +1,29 @@
 .App {
   height: 100%;
 }
-
 .mainContainer {
   width: 100%;
 }
-
 .mainbg {
   width: 100%;
   position: relative;
   height: auto;
 }
-
 .mainct {
   width: 25vw;
   position: absolute;
   cursor: pointer;
+}
+
+.cateLink:hover .mainct {
+  display:none;
+}
+.cateLink:hover img.hoverImg {
+  display:inline-block;
+  transform: rotate(7deg) scale(1.1);
+}
+.cateLink:nth-child(2n) img.hoverImg {
+  transform: rotate(-7deg) scale(1.1);
 }
 
 .ct1 {
@@ -35,12 +43,24 @@
   left: 220px;
 }
 
+.hoverImg {
+  display:none;
+}
+
+.cateTitle {
+  background-color:white;
+  color:rgb(120, 55, 180);
+  display: inline-block;
+  line-height:30px;
+  padding:0 20px;
+  border-radius: 15px;
+}
+
 @media only screen and (max-width: 992px) {
   .mainContainer {
     position: relative;
     width: 100%;
   }
-
   .mainbg {
     position: absolute;
     width: 100%;
