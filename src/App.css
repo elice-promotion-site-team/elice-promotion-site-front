@@ -69,8 +69,10 @@
   .mainContainer {
     position: relative;
     width: 100%;
-.App-link {
-  color: #61dafb;
+  }
+  .App-link {
+    color: #61dafb;
+  }
 }
 
 @keyframes App-logo-spin {
