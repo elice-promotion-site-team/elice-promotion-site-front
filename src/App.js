@@ -4,6 +4,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import Nav from './components/Nav';
+import Hamburger from './components/Hamburger';
+import Burger from './components/Burger';
 
 import mainBackground from '../src/assets/main_background.png';
 import mainCategory1 from '../src/assets/main01-1.png';
@@ -34,7 +36,9 @@ function App() {
           path="/"
           element={
             <div className="mainContainer">
-              <Nav title="Elice Promotion Site" />
+              {/* <Nav title="Elice Promotion Site" /> */}
+              {/* <Hamburger /> */}
+              <Burger />
               <section className='main main1'>
                 <span className="cateTitle">트랙소개</span>
                 <a href="/trackinfo" className="cateLink">
