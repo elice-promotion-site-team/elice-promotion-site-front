@@ -4,7 +4,7 @@ import '../css/Hamburger.css';
 
 const HamburgerMenu = () => (
   <div className="relative p-2">
-    <Menu customBurgerIcon={<HamburgerIcon />} width={'auto'} className="left-0 top-20">
+    <Menu customBurgerIcon={<HamburgerIcon />} width={'auto'}>
       <Links />
     </Menu>
   </div>

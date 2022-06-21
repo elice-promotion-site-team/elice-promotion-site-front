@@ -3,7 +3,7 @@
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
+  right: 36px;
   top: 36px;
 }
 
@@ -42,6 +42,7 @@
   background: #c7d1fa;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  overflow: hidden;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -57,6 +58,7 @@
 
 /* Wrapper for item list */
 .bm-item-list {
+  height: fit-content;
   padding: 0.8em;
   margin-bottom: 20px;
 }
