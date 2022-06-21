@@ -18,16 +18,16 @@ function Burger() {
       <nav className={`navbar ${navIsOpen && 'nav-open'}`}>
         <ul className="nav-links">
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">Home</a>
+            <a href="/trackinfo">트랙설명</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">Blog</a>
+            <a href="#">신청방법</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">Gallery</a>
+            <a href="#">Quiz</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">About</a>
+            <a href="#">방명록</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
             <a href="#">Contact</a>

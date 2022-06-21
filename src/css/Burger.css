@@ -1,7 +1,7 @@
 :root {
   --main-color: rgb(120, 55, 180);
   --sub-color: #1d3557;
-  --sub2-color: #a8dadc;
+  --sub2-color: #54b3d6;
   --error-color: #e63946;
 }
 
@@ -92,6 +92,7 @@
 .navbar .nav-links li:nth-of-type(5).nav-link-open {
   transition-delay: 0.65s;
 }
+
 .navbar .nav-links li a {
 	font-weight: bold;
   text-decoration: none;
@@ -100,18 +101,58 @@
   position: relative;
   letter-spacing: 1px;
 }
-.navbar .nav-links li a::before {
-  top: -2px;
+
+.navbar .nav-links li a:hover {
+	background: linear-gradient(to right, #efa8a8 20%, #e66465 40%, #bd66d5 60%, #9166d5 80%);
+  background-size: 200% auto;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+  animation: shine 2s infinite;
 }
-.navbar .nav-links li a::after {
-  bottom: -5px;
+
+@keyframes shine {
+  from {
+    background-position: 150%;
+  }
+  
+  to {
+    background-position: -50%;
+  }
+}
+
+/* 밑줄 효과
+.navbar .nav-links li a {
+	font-size: 2rem;
+	font-weight: bold;
+  text-decoration: none;
+  color: white;
+  position: relative;
+	background-image: linear-gradient(to right, var(--sub-color), var(--sub2-color) 50%, white 50%);
+	background-size: 200% 100%;
+	background-position: -100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transition: all 0.3s ease-in-out;
+}
+
+.navbar .nav-links li a:before {
+	content: '';
+	background: #54b3d6;
+	display: block;
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 0;
+	height: 3px;
+	transition: all 0.3s ease-in-out;
+}
+.navbar .nav-links li a:hover {
+	background-position: 0;
 }
 .navbar .nav-links li a:hover::before {
-  width: 100%;
-}
-.navbar .nav-links li a:hover::after {
-  width: 100%;
-}
+	width: 100%;
+} */
+
 .navbar.nav-open {
   display: block;
   clip-path: circle(100%);
