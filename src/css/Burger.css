@@ -1,0 +1,118 @@
+:root {
+  --main-color: rgb(120, 55, 180);
+  --sub-color: #1d3557;
+  --sub2-color: #a8dadc;
+  --error-color: #e63946;
+}
+
+.navbar .nav-links li:nth-of-type(1),
+.navbar .nav-links li:nth-of-type(2),
+.navbar .nav-links li:nth-of-type(3),
+.navbar .nav-links li:nth-of-type(4),
+.navbar .nav-links li:nth-of-type(5) {
+  opacity: 0;
+  transition: 0.3s ease-in all;
+}
+.navbar .nav-links li:nth-of-type(1).nav-link-open,
+.navbar .nav-links li:nth-of-type(2).nav-link-open,
+.navbar .nav-links li:nth-of-type(3).nav-link-open,
+.navbar .nav-links li:nth-of-type(4).nav-link-open,
+.navbar .nav-links li:nth-of-type(5).nav-link-open {
+  opacity: 1;
+  transform: translateY(10px);
+}
+.navbar .nav-links li a::before,
+.navbar .nav-links li a::after {
+  position: absolute;
+  content: '';
+  height: 4px;
+  width: 0%;
+  background-color: #272c09;
+  left: 0;
+  border-radius: 2px;
+  transition: 0.3s ease all;
+}
+
+.burger {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  color: var(--sub-color);
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+}
+.burger i:nth-of-type(1) {
+  display: block;
+}
+.burger i:nth-of-type(2) {
+  display: none;
+}
+.burger.burger-open {
+  color: #2a3255;
+}
+.burger.burger-open i:nth-of-type(1) {
+  display: none;
+}
+.burger.burger-open i:nth-of-type(2) {
+  display: block;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(47, 47, 47, 0.8);
+  clip-path: circle(0px at 0 0px);
+  transition: 0.5s ease all;
+}
+.navbar .nav-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.navbar .nav-links li {
+  list-style-type: none;
+  margin: 3rem 0;
+}
+.navbar .nav-links li:nth-of-type(1).nav-link-open {
+  transition-delay: 0.25s;
+}
+.navbar .nav-links li:nth-of-type(2).nav-link-open {
+  transition-delay: 0.35s;
+}
+.navbar .nav-links li:nth-of-type(3).nav-link-open {
+  transition-delay: 0.45s;
+}
+.navbar .nav-links li:nth-of-type(4).nav-link-open {
+  transition-delay: 0.55s;
+}
+.navbar .nav-links li:nth-of-type(5).nav-link-open {
+  transition-delay: 0.65s;
+}
+.navbar .nav-links li a {
+	font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-size: 2.4rem;
+  position: relative;
+  letter-spacing: 1px;
+}
+.navbar .nav-links li a::before {
+  top: -2px;
+}
+.navbar .nav-links li a::after {
+  bottom: -5px;
+}
+.navbar .nav-links li a:hover::before {
+  width: 100%;
+}
+.navbar .nav-links li a:hover::after {
+  width: 100%;
+}
+.navbar.nav-open {
+  display: block;
+  clip-path: circle(100%);
+}

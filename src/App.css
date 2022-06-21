@@ -26,7 +26,7 @@ body, html, #root {
   position: relative;
   height:100%;
   text-align: center;
-  
+  z-index: -1;
 }
 .main1 {
   background:url('/src/assets/main_bg01.jpg') no-repeat top center fixed;
