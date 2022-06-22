@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
 import Button from '@mui/material/Button';
 
 const GuestBook = () => {
+  const [comments, setComments] = useState([]);
+
+  //처음 랜더링 시 전체 방명록 목록 불러오기
+  useEffect(() => {
+    refleshHandler();
+  }, []);
+
+  //전체 방명록 목록 불러와서 comments state 설정
+  const refleshHandler = async () => {
+    const res = await fetch('http://localhost:3001/api/guestbooks');
+    const data = await res.json();
+    setComments(data);
+  };
+
+  //방명록 등록
   const submitHandler = async (evt) => {
     evt.preventDefault();
     const nickname = evt.target.nickname.value;
     const comment = evt.target.comment.value;
-    console.log(nickname);
+
     const res = await fetch('http://localhost:3001/api/guestbook', {
       method: 'POST',
       headers: {
@@ -16,8 +31,8 @@ const GuestBook = () => {
       body: JSON.stringify({ nickname, comment }),
     });
     const data = await res.json();
-    console.log(data);
   };
+
   return (
     <div>
       <header>
@@ -49,23 +64,16 @@ const GuestBook = () => {
           </form>
         </article>
         <article>
-          <div style={{ borderTop: '1px solid rgb(159, 142, 197)' }}>
-            <div>nickname</div>
-            <div>comment</div>
-            <div>date</div>
-          </div>
-
-          <div style={{ borderTop: '1px solid rgb(159, 142, 197)' }}>
-            <div>nickname</div>
-            <div>comment</div>
-            <div>date</div>
-          </div>
-
-          <div style={{ borderTop: '1px solid rgb(159, 142, 197)' }}>
-            <div>nickname</div>
-            <div>comment</div>
-            <div>date</div>
-          </div>
+          {/* 전체 방명록 목록 */}
+          {comments.map((comment) => {
+            return (
+              <div key={comment._id} style={{ borderTop: '1px solid rgb(159, 142, 197)' }}>
+                <div>{comment.nickname}</div>
+                <div>{comment.comment}</div>
+                <div>{comment.createdAt}</div>
+              </div>
+            );
+          })}
         </article>
       </main>
     </div>
