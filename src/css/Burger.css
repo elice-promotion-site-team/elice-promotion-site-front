@@ -34,7 +34,7 @@
 }
 
 .burger {
-  position: absolute;
+  position: fixed;
   top: 35px;
   right: 35px;
   color: var(--sub-color);
