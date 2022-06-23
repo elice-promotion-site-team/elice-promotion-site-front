@@ -58,8 +58,8 @@
   display: block;
 }
 .navbar {
-	z-index: 1;
-  position: absolute;
+  z-index: 1;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -95,7 +95,7 @@
 }
 
 .navbar .nav-links li a {
-	font-weight: bold;
+  font-weight: bold;
   text-decoration: none;
   color: white;
   font-size: 2.4rem;
@@ -104,10 +104,10 @@
 }
 
 .navbar .nav-links li a:hover {
-	background: linear-gradient(to right, #efa8a8 20%, #e66465 40%, #bd66d5 60%, #9166d5 80%);
+  background: linear-gradient(to right, #efa8a8 20%, #e66465 40%, #bd66d5 60%, #9166d5 80%);
   background-size: 200% auto;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: shine 2s infinite;
 }
 
@@ -115,7 +115,7 @@
   from {
     background-position: 150%;
   }
-  
+
   to {
     background-position: -50%;
   }
