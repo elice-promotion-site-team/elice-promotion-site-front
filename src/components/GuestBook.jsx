@@ -22,7 +22,7 @@ const GuestBook = () => {
   //방명록 등록
   const submitHandler = async (evt) => {
     evt.preventDefault();
-    const nickname = evt.target.nickname.value;
+    const name = evt.target.name.value;
     const comment = evt.target.comment.value;
 
     const res = await fetch('http://localhost:3001/api/guestbook', {
@@ -30,7 +30,7 @@ const GuestBook = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nickname, comment }),
+      body: JSON.stringify({ name, comment }),
     });
     await res.json();
   };
@@ -55,8 +55,8 @@ const GuestBook = () => {
           <form onSubmit={submitHandler}>
             <input
               type="text"
-              name="nickname"
-              placeholder="닉네임"
+              name="name"
+              placeholder="이름"
               style={{ margin: '1rem 0', width: '4rem', borderWidth: '0 0 1px' }}
             />
             <textarea name="comment" placeholder="내용을 입력하세요" style={{ width: '99%' }} />
@@ -74,7 +74,7 @@ const GuestBook = () => {
                 style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgb(159, 142, 197)' }}
               >
                 <div>
-                  <div>{comment.nickname}</div>
+                  <div>{comment.name}</div>
                   <div>{comment.comment}</div>
                   <div>{comment.createdAt}</div>
                 </div>
