@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
@@ -30,7 +32,7 @@ const GuestBook = () => {
       },
       body: JSON.stringify({ nickname, comment }),
     });
-    const data = await res.json();
+    await res.json();
   };
 
   return (
@@ -67,10 +69,18 @@ const GuestBook = () => {
           {/* 전체 방명록 목록 */}
           {comments.map((comment) => {
             return (
-              <div key={comment._id} style={{ borderTop: '1px solid rgb(159, 142, 197)' }}>
-                <div>{comment.nickname}</div>
-                <div>{comment.comment}</div>
-                <div>{comment.createdAt}</div>
+              <div
+                key={comment._id}
+                style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgb(159, 142, 197)' }}
+              >
+                <div>
+                  <div>{comment.nickname}</div>
+                  <div>{comment.comment}</div>
+                  <div>{comment.createdAt}</div>
+                </div>
+                <IconButton aria-label="delete" size="large">
+                  <DeleteIcon />
+                </IconButton>
               </div>
             );
           })}
