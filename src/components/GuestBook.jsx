@@ -68,11 +68,12 @@ const GuestBook = () => {
               flexDirection: 'column',
               width: '100%',
               height: '101px',
-              minHeight: '15rem',
-              padding: '1rem 2rem',
+              minHeight: '20rem',
+              padding: '5rem 1rem 2rem',
               boxSizing: 'border-box',
               backgroundColor: '#fff',
               zIndex: '1',
+              marginBottom: '5rem',
             }}
             onClick={login}
           >

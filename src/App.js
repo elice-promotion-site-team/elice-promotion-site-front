@@ -63,7 +63,7 @@ function App() {
               </section>
               <section className="main main4">
                 <span className="cateTitle">방명록</span>
-                <a href="/trackinfo" className="cateLink">
+                <a href="/guestbook" className="cateLink">
                   <img src={mainCategory4} className="mainct" alt="방명록" />
                   <img src={mainCategory04} className="mainct hoverImg" alt="방명록" />
                 </a>
