@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 import Nav from './Nav';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
@@ -45,14 +44,17 @@ const GuestBook = () => {
   };
 
   return (
-    <div>
+    <GuestBookContainer className="no-scroll">
+      <GlobalStyle />
       <header>
         <Nav title="방명록" />
       </header>
-      <main style={{ position: 'fixed', width: '100%', fontFamily: 'Noto Sans KR sans-serif' }}>
+      <main>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <article
             style={{
+              position: 'sticky',
+              top: '0px',
               display: 'flex',
               flexDirection: 'column',
               width: '100%',
@@ -60,6 +62,8 @@ const GuestBook = () => {
               minHeight: '15rem',
               padding: '1rem 2rem',
               boxSizing: 'border-box',
+              backgroundColor: '#fff',
+              zIndex: '1',
             }}
           >
             <form onSubmit={submitHandler}>
@@ -92,7 +96,7 @@ const GuestBook = () => {
               </Button>
             </form>
           </article>
-          <article style={{ padding: '1rem 2rem' }}>
+          <article style={{ padding: '1rem 2rem', boxSizing: 'border-box' }}>
             {/* 전체 방명록 목록 */}
             {comments.map((comment) => {
               return (
@@ -112,7 +116,7 @@ const GuestBook = () => {
                     <div style={{ fontSize: '0.6rem' }}>{comment.createdAt.substr(0, 10)}</div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Button name="delete" variant="outlined" style={{ float: 'right', marginRight: '0.5rem' }}>
+                    <Button name="modify" variant="outlined" style={{ float: 'right', marginRight: '0.5rem' }}>
                       수정
                     </Button>
                     <Button name="delete" variant="outlined" style={{ float: 'right' }}>
@@ -125,8 +129,26 @@ const GuestBook = () => {
           </article>
         </div>
       </main>
-    </div>
+    </GuestBookContainer>
   );
 };
 
 export default GuestBook;
+
+const GuestBookContainer = styled.body`
+  width: 100%;
+`;
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Noto Sans KR sans-serif';
+
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    overscroll-behavior-y: none;
+  }
+`;
