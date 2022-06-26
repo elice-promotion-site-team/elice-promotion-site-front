@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import { useCookies } from 'react-cookie';
 import Nav from './Nav';
 import Button from '@mui/material/Button';
 
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
+  const [cookies] = useCookies(['token']);
 
   //처음 랜더링 시 전체 방명록 목록 불러오기
   useEffect(() => {
@@ -45,6 +47,11 @@ const GuestBook = () => {
     //}
   };
 
+  //구글 로그인
+  const login = async () => {
+    if (!cookies.token) window.open('http://localhost:3001/auth/google', '_blank');
+  };
+
   return (
     <GuestBookContainer className="no-scroll">
       <GlobalStyle />
@@ -67,6 +74,7 @@ const GuestBook = () => {
               backgroundColor: '#fff',
               zIndex: '1',
             }}
+            onClick={login}
           >
             <form onSubmit={submitHandler}>
               <input
