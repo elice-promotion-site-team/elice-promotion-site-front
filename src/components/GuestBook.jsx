@@ -14,7 +14,7 @@ const GuestBook = () => {
 
   //전체 방명록 목록 불러와서 comments state 설정
   const refleshHandler = async () => {
-    const res = await fetch('http://localhost:3001/api/guestbooks');
+    const res = await fetch('http://localhost:3001/api/guestbook/list');
     const data = await res.json();
     setComments(data);
   };
@@ -24,6 +24,13 @@ const GuestBook = () => {
     evt.preventDefault();
     const name = evt.target.name.value;
     const comment = evt.target.comment.value;
+    //더미 데이터 생성
+    // let name;
+    // let comment;
+    // for (let i = 0; i <= 10; i++) {
+    //   name = '이름' + i;
+    //   comment = i + '번째 방명록 테스트입니다.';
+    //   console.log(name + ' ' + comment);
 
     const res = await fetch('http://localhost:3001/api/guestbook', {
       method: 'POST',
@@ -33,6 +40,7 @@ const GuestBook = () => {
       body: JSON.stringify({ name, comment }),
     });
     await res.json();
+    //}
   };
 
   return (
