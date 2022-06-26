@@ -39,6 +39,8 @@ const GuestBook = () => {
       body: JSON.stringify({ name, comment }),
     });
     await res.json();
+    evt.target.name.value = '';
+    evt.target.comment.value = '';
     refleshHandler();
     //}
   };
@@ -135,7 +137,7 @@ const GuestBook = () => {
 
 export default GuestBook;
 
-const GuestBookContainer = styled.body`
+const GuestBookContainer = styled.div`
   width: 100%;
 `;
 
