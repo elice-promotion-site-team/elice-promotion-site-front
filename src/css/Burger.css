@@ -1,0 +1,174 @@
+:root {
+  --main-color: rgb(120, 55, 180);
+  --sub-color: #1d3557;
+  --sub2-color: #54b3d6;
+  --error-color: #e63946;
+}
+
+.login,
+.navbar .nav-links li:nth-of-type(1),
+.navbar .nav-links li:nth-of-type(2),
+.navbar .nav-links li:nth-of-type(3),
+.navbar .nav-links li:nth-of-type(4),
+.navbar .nav-links li:nth-of-type(5) {
+  opacity: 0;
+  transition: 0.3s ease-in all;
+}
+.login,
+.navbar .nav-links li:nth-of-type(1).nav-link-open,
+.navbar .nav-links li:nth-of-type(2).nav-link-open,
+.navbar .nav-links li:nth-of-type(3).nav-link-open,
+.navbar .nav-links li:nth-of-type(4).nav-link-open,
+.navbar .nav-links li:nth-of-type(5).nav-link-open {
+  opacity: 1;
+  transform: translateY(10px);
+}
+.navbar .nav-links li a::before,
+.navbar .nav-links li a::after {
+  position: absolute;
+  content: '';
+  height: 4px;
+  width: 0%;
+  background-color: #272c09;
+  left: 0;
+  border-radius: 2px;
+  transition: 0.3s ease all;
+}
+
+.burger {
+  position: fixed;
+  top: 35px;
+  right: 35px;
+  color: var(--sub-color);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+}
+.burger i:nth-of-type(1) {
+  display: block;
+}
+.burger i:nth-of-type(2) {
+  display: none;
+}
+.burger.burger-open {
+  color: #2a3255;
+}
+.burger.burger-open i:nth-of-type(1) {
+  display: none;
+}
+.burger.burger-open i:nth-of-type(2) {
+  display: block;
+}
+.navbar {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(47, 47, 47, 0.8);
+  clip-path: circle(0px at 0 0px);
+  transition: 0.5s ease all;
+}
+.login {
+  z-index: 1;
+  position: fixed;
+  right: 65px;
+  bottom: 65px;
+  clip-path: circle(0px at 0 0px);
+  transition: 0.5s ease all;
+  cursor: pointer;
+}
+.navbar .nav-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.navbar .nav-links li {
+  list-style-type: none;
+  margin: 3rem 0;
+}
+.navbar .nav-links li:nth-of-type(1).nav-link-open {
+  transition-delay: 0.25s;
+}
+.navbar .nav-links li:nth-of-type(2).nav-link-open {
+  transition-delay: 0.35s;
+}
+.navbar .nav-links li:nth-of-type(3).nav-link-open {
+  transition-delay: 0.45s;
+}
+.navbar .nav-links li:nth-of-type(4).nav-link-open {
+  transition-delay: 0.55s;
+}
+.navbar .nav-links li:nth-of-type(5).nav-link-open {
+  transition-delay: 0.65s;
+}
+.login {
+  transition-delay: 0.8s;
+}
+
+.navbar .nav-links li a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-size: 2.4rem;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-links li a:hover {
+  background: linear-gradient(to right, #efa8a8 20%, #e66465 40%, #bd66d5 60%, #9166d5 80%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  from {
+    background-position: 150%;
+  }
+
+  to {
+    background-position: -50%;
+  }
+}
+
+/* 밑줄 효과
+.navbar .nav-links li a {
+	font-size: 2rem;
+	font-weight: bold;
+  text-decoration: none;
+  color: white;
+  position: relative;
+	background-image: linear-gradient(to right, var(--sub-color), var(--sub2-color) 50%, white 50%);
+	background-size: 200% 100%;
+	background-position: -100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transition: all 0.3s ease-in-out;
+}
+
+.navbar .nav-links li a:before {
+	content: '';
+	background: #54b3d6;
+	display: block;
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 0;
+	height: 3px;
+	transition: all 0.3s ease-in-out;
+}
+.navbar .nav-links li a:hover {
+	background-position: 0;
+}
+.navbar .nav-links li a:hover::before {
+	width: 100%;
+} */
+
+.navbar.nav-open, .login.nav-link-open{
+  display: block;
+  clip-path: circle(100%);
+}

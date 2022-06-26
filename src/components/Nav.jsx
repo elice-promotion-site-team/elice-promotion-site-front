@@ -22,7 +22,11 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 1em;
+  padding:0 3%;
+  box-sizing:border-box;
+  position:fixed;
+  width:100%;
+  z-index:9999;
   & > h1 {
     font-size: 1.5em;
     flex: 1;
