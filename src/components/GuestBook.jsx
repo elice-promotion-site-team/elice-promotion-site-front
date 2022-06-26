@@ -40,6 +40,7 @@ const GuestBook = () => {
       body: JSON.stringify({ name, comment }),
     });
     await res.json();
+    refleshHandler();
     //}
   };
 
@@ -48,51 +49,81 @@ const GuestBook = () => {
       <header>
         <Nav title="방명록" />
       </header>
-      <main>
-        <article
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            height: '101px',
-            minHeight: '15rem',
-            padding: '1rem 2rem',
-            boxSizing: 'border-box',
-          }}
-        >
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              name="name"
-              placeholder="이름"
-              style={{ margin: '1rem 0', width: '4rem', borderWidth: '0 0 1px' }}
-            />
-            <textarea name="comment" placeholder="내용을 입력하세요" style={{ width: '99%' }} />
-            <Button type="submit" name="submit" variant="outlined" style={{ float: 'right' }}>
-              등록
-            </Button>
-          </form>
-        </article>
-        <article>
-          {/* 전체 방명록 목록 */}
-          {comments.map((comment) => {
-            return (
-              <div
-                key={comment._id}
-                style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgb(159, 142, 197)' }}
-              >
-                <div>
-                  <div>{comment.name}</div>
-                  <div>{comment.comment}</div>
-                  <div>{comment.createdAt}</div>
+      <main style={{ position: 'fixed', width: '100%', fontFamily: 'Noto Sans KR sans-serif' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <article
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              height: '101px',
+              minHeight: '15rem',
+              padding: '1rem 2rem',
+              boxSizing: 'border-box',
+            }}
+          >
+            <form onSubmit={submitHandler}>
+              <input
+                type="text"
+                name="name"
+                placeholder="이름"
+                style={{
+                  margin: '1rem 0',
+                  width: '4rem',
+                  borderWidth: '0 0 1px',
+                  borderColor: '#D3D3D3',
+                  fontSize: '1rem',
+                  outline: 'none',
+                }}
+              />
+              <textarea
+                name="comment"
+                placeholder="내용을 입력하세요"
+                style={{
+                  width: '99%',
+                  height: '10vh',
+                  borderColor: '#D3D3D3',
+                  fontSize: '1rem',
+                  outline: 'none',
+                }}
+              />
+              <Button type="submit" name="submit" variant="outlined" style={{ float: 'right' }}>
+                등록
+              </Button>
+            </form>
+          </article>
+          <article style={{ padding: '1rem 2rem' }}>
+            {/* 전체 방명록 목록 */}
+            {comments.map((comment) => {
+              return (
+                <div
+                  key={comment._id}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    borderTop: '1px solid #D3D3D3',
+                    lineHeight: '2',
+                    padding: '1rem 0',
+                  }}
+                >
+                  <div>
+                    <div>{comment.name}</div>
+                    <div>{comment.comment}</div>
+                    <div style={{ fontSize: '0.6rem' }}>{comment.createdAt.substr(0, 10)}</div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Button name="delete" variant="outlined" style={{ float: 'right', marginRight: '0.5rem' }}>
+                      수정
+                    </Button>
+                    <Button name="delete" variant="outlined" style={{ float: 'right' }}>
+                      삭제
+                    </Button>
+                  </div>
                 </div>
-                <IconButton aria-label="delete" size="large">
-                  <DeleteIcon />
-                </IconButton>
-              </div>
-            );
-          })}
-        </article>
+              );
+            })}
+          </article>
+        </div>
       </main>
     </div>
   );
