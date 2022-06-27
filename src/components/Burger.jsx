@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../css/Burger.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 function Burger() {
   const [navIsOpen, setNavIsOpen] = useState(false);
@@ -34,6 +34,10 @@ function Burger() {
           </li>
         </ul>
       </nav>
+
+      <div className={`login ${navIsOpen && 'nav-link-open'}`}>
+        <FontAwesomeIcon icon={faArrowRightToBracket} size='2xl' color='white' />
+      </div>
     </div>
   );
 }
