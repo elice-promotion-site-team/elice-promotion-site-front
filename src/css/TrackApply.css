@@ -317,7 +317,6 @@
   100% { transform: skewX(0deg); }  
 }
 
-/* 굿즈 */
 .sixth  {
   background-color: white;
   padding: 5%;
@@ -330,9 +329,9 @@
   font-size: 7vh;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  margin-top: 2.7rem;
+  margin-top: 2.5vh;
   margin-bottom: 12vh;
-  line-height: 3.4rem;
+  line-height: 5rem;
   text-align: center;
 }
 
@@ -355,7 +354,7 @@
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 600;
   font-size: 4.8vh;
-  line-height: 2.4rem;
+  line-height: 3.4rem;
   margin: 10px 0;
 }
 
