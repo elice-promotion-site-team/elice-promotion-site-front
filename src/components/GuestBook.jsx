@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useCookies } from 'react-cookie';
 import Nav from './Nav';
@@ -6,7 +6,9 @@ import Button from '@mui/material/Button';
 
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
+  const [userId, setUserId] = useState('');
   const [cookies] = useCookies(['token']);
+  const nameRef = useRef('');
 
   //처음 랜더링 시 전체 방명록 목록 불러오기
   useEffect(() => {
@@ -17,7 +19,18 @@ const GuestBook = () => {
   const refleshHandler = async () => {
     const res = await fetch('http://localhost:3001/api/guestbook/list');
     const data = await res.json();
-    setComments(data);
+    setComments(data.reverse());
+
+    getUser();
+  };
+
+  const getUser = async () => {
+    if (cookies.token) {
+      const res = await fetch(`http://localhost:3001/auth/${cookies.token}`);
+      const data = await res.json();
+      setUserId(data._id);
+      nameRef.current.value = data.name;
+    }
   };
 
   //방명록 등록
@@ -38,7 +51,7 @@ const GuestBook = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, comment }),
+      body: JSON.stringify({ name, comment, userId }),
     });
     await res.json();
     evt.target.name.value = '';
@@ -49,7 +62,16 @@ const GuestBook = () => {
 
   //구글 로그인
   const login = async () => {
-    if (!cookies.token) window.open('http://localhost:3001/auth/google', '_blank');
+    if (!cookies.token) {
+      //https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=373180507864-4e0be4k09gg7kukg63ea5qe8k918j0iv.apps.googleusercontent.com
+      await window.open('http://localhost:3001/auth/google', '_blank');
+      // await window.location.replace('/guestbook'); //to do solve cors
+      //const res = await fetch('http://localhost:3001/auth/google');
+      //const data = fetch('http://localhost:3001/auth/google', { mode: 'no-cors' }).then((res) => res.json());
+      //const data = await res.json();
+      //console.log(data);
+    }
+    getUser();
   };
 
   return (
@@ -82,6 +104,7 @@ const GuestBook = () => {
                 type="text"
                 name="name"
                 placeholder="이름"
+                ref={nameRef}
                 style={{
                   margin: '1rem 0',
                   width: '4rem',
@@ -126,14 +149,23 @@ const GuestBook = () => {
                     <div>{comment.comment}</div>
                     <div style={{ fontSize: '0.6rem' }}>{comment.createdAt.substr(0, 10)}</div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Button name="modify" variant="outlined" style={{ float: 'right', marginRight: '0.5rem' }}>
-                      수정
-                    </Button>
-                    <Button name="delete" variant="outlined" style={{ float: 'right' }}>
-                      삭제
-                    </Button>
-                  </div>
+                  {userId === comment.userId ? (
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <Button
+                        name="modify"
+                        variant="outlined"
+                        style={{ float: 'right', marginRight: '0.5rem' }}
+                        value={comment._id}
+                      >
+                        수정
+                      </Button>
+                      <Button name="delete" variant="outlined" style={{ float: 'right' }} value={comment._id}>
+                        삭제
+                      </Button>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               );
             })}
