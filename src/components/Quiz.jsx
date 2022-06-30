@@ -4,6 +4,66 @@ import styled from 'styled-components';
 import quizzes from '../assets/quizzes.json'
 import { useCookies } from 'react-cookie';
 import Header from './Header';
+// import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// 새 퀴즈 등록
+async function del(){
+  // const resNewQuiz = await fetch(`/api/quiz`, {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     "quizNumber": 21,
+  //     "quizName": "퀴즈 이름",
+  //     "question": "다음 중 Git에 대해 틀린 것을 고르세요.",
+  //     "example": ["Git은 여러 명이 효율적으로 협업하기 위한 툴이다.","Git은 오픈소스이므로 누구나 사용할 수 있다.","Git은 작업을 할 때 자동으로 옛 버전의 파일을 지워주기 때문에 용량을 아낄 수 있다.","Git을 사용하면 여러 버전을 동시에 관리할 수 있어 데이터의 안정성을 보장된다."],
+  //     "answer": 3,
+  //     "level": "easy"
+  //   },
+  //   {
+  //     "quizNumber": 22,
+  //     "quizName": "퀴즈 이름",
+  //     "question": "변경된 내용을 원격저장소에 업데이트 해볼까요? 저장소에 정보를 올리는 git명령어 중 옳은것을 골라주세요.",
+  //     "example": ["git push","git push origin master","git push --all", "git push https://gitlab.com/group/project"],
+  //     "answer": 2,
+  //     "level": "easy"
+  //   },
+  //   {
+  //     "quizNumber": 23,
+  //     "quizName": "퀴즈 이름",
+  //     "question": "this가 가리키는 것에 대한 설명으로 옳지 않은 것을 고르세요.",
+  //     "example": ["함수의 호출 환경에 따라 함수 내 this가 가리키는 것이 결정된다.","bind, apply, call 메서드는 함수의 this를 바꿀 수 있다.","setTimeout은 함수의 this를 바꿀 수 없다.", "콜백 함수는 다른 함수의 인자로 보내지는 함수이다."],
+  //     "answer": 3,
+  //     "level": "normal"
+  //   },
+  //   {
+  //     "quizNumber": 24,
+  //     "quizName": "퀴즈 이름",
+  //     "question": "HTTP, REST API에 관한 설명으로 옳지 않은 것을 고르세요.",
+  //     "example": ["HTTP는 서버와 클라이언트 간 통신 방법을 정한 규약이다.","HTTP 요청 메서드는 요청에 대한 동작을 정의한다.","HTTP 응답 메시지에 헤더 정보가 포함되지 않는다.", "HTTP Status는 요청의 결과를 코드로 나타낸다."],
+  //     "answer": 3,
+  //     "level": "normal"
+  //   },
+  //   {
+  //     "quizNumber": 25,
+  //     "quizName": "퀴즈 이름",
+  //     "question": "다음 중 MongoDB의 개념에 대한 설명으로 올바르지 않은 것은?",
+  //     "example": ["Database는 Collection이 저장되는 저장소이다.","Collection은 Document가 저장되는 공간이다.","Document는 MongoDB에 저장되는 데이터이다.", "ObjectID는 하나씩 숫자가 증가하는 primary key이다."],
+  //     "answer": 4,
+  //     "level": "hard"
+  //   }
+  // )
+  // })
+  // const newQuizData = await resNewQuiz.json()
+
+  // 예제 문제 삭제
+  // const resDelQuiz = await fetch(`/api/quiz/25`,{
+  //   method: 'DELETE',
+  // })
+  // const DelQuizData = await resDelQuiz.json()
+}
+del()
 
 let arr = []
 let quizzesInfo = []
@@ -19,91 +79,77 @@ for(let i=0; i<datas.length; i++){
 }
 arr.push(0)
 
+
+
 const Quiz = () => {
   const [number, setNumber] = useState(0);
   const [number2, setNumber2] = useState(1);
   const [progressNum, setProgressNum] = useState(100/datas.length)
   const [score, setScore] = useState(0)
   const [corrected, setCorrected] = useState(0)
+  const [bestScore , setBestScore] = useState(0)
+  const [percentage , setPercentage] = useState(0)
+  const [arr3, setArr3] = useState(0)
+  // const [datas, setDatas] = useState('')
 
-  let userInfo = {"isSolved":true, "score":{score}, "corrected": {corrected}}
+  // const [allQuizQuestion , setAllQuizQuestion] = useState('')
+  // const [allQuizEx , setAllQuizEx] = useState([])
+  // const [allQuizNum , setAllQuizNum] = useState([])
+  // const [allQuizAnswer , setAllQuizAnswer] = useState([])
+  // const [allQuizLevel , setAllQuizLevel] = useState([])
 
-  //로그인
-  const [cookies] = useCookies(['token']);
-  if (!cookies.token) {
-    alert('로그인 해주세요.');
-    window.open('http://localhost:3000/auth/google', '_blank')
-  };
-  // console.log(cookies.token)
-
+  // let userInfo = {"isSolved":true, "score":{score}, "corrected": {corrected}}
+  // let arr2 = []
+  // async function allQuizzes() {
   
-  const aa = async () => {
-    let res1 = await fetch(`http://localhost:3000/auth/${cookies.token}`, {
-      method: 'GET',
-    })
-    const tokenData = await res1.json();
-
-
-    // 로그인한 유저 정보
-    const resUserId = await fetch('http://localhost:3000/api/user/list', {
-      method : 'GET',
-    })
-    let userId = ''
-    const userData = await resUserId.json();
-    userData.forEach(user => {
-      if(user.name === tokenData.name) userId = user._id
-    })
-      // .then(res => res.json())
-      // .then(datas => datas.forEach(data => data._id))
-
-
-    // 로그인한 유저 퀴즈 정보 업데이트
-    const resQuiz = await fetch(`http://localhost:3000/api/user/${userId}/quiz`, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        "isSolved" : true, 
-        "score" : score, 
-        "corrected" : corrected
-      }),
-    })
-    const quizData = await resQuiz.json()
-
-    // 각 퀴즈 정/오답 정보 업데이트
-    const resQuizzes = await fetch(`http://localhost:3000/api/quiz`, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        "update" : quizzesInfo
-      })
-    })
-    const quizzezData = await resQuizzes.json()
-
+  //   const resAllQuizzes = await fetch(`/api/quiz/quizzes`, {
+  //     method: 'GET'
+  //   })
+  //   const allQuizzesData = await resAllQuizzes.json()
+  //   const datas2 = allQuizzesData.map(data => {
+  //     return data
+  //   })
+  //   // console.log(datas2.length)
     
-  } //aa()
+  //   for(let i=0; i<datas2.length; i++){
+  //     let randomNum2 = Math.floor(Math.random()*Number(datas2.length))
+  //     if(arr2.indexOf(randomNum2) === -1) arr2.push(randomNum2)
+  //     else i--
+  //   }
+  //   arr2.push(0)
+  //   console.log(arr2)
   
+  // }
+  // allQuizzes()
+
+
+  
+  // 최고점수 불러오기
   var allScore = []
   async function whatIsBestScore() {
-    // 최고점수 불러오기
-    
-    const resBestScore = await fetch(`http://localhost:3000/api/user/quiz/ranking`, {
+    const resBestScore = await fetch(`/api/user/quiz/ranking`, {
       method: 'GET'
     })
     const bestScoreData = await resBestScore.json()
     bestScoreData.forEach(user => allScore.push(user.score))
+    const scores = allScore.sort((a,b) => b-a)
+    setBestScore(scores[0])
+
+    
   }
   whatIsBestScore()
-  let scores = allScore.sort((a,b) => b-a)
-  const bestScore = scores[0]
-  // console.log(allScore)
   
-  
+
+  //로그인
+  const [cookies] = useCookies(['token']);
+  if (!cookies.token) {
+    // alert('로그인 해주세요.')
+    window.location.href = '/auth/google'
+  };
+  // console.log(cookies.token)
+
   const checkAnswer = (num) => {
-    if(number2 <= 3) { // arr.length
+    if(number2 <= arr.length) { // arr.length
       setTimeout(() => {
         setNumber(number + 1)
         setNumber2(number2 + 1)
@@ -145,8 +191,88 @@ const Quiz = () => {
     }
   } // num
 
-  if (number2 > 3) {
+  
+  const aa = async () => {
+    let res1 = await fetch(`/auth/${cookies.token}`, {
+      method: 'GET',
+    })
+    const tokenData = await res1.json();
+
+
+    // 로그인한 유저 정보
+    const resUserId = await fetch('/api/user/list', {
+      method : 'GET',
+    })
+    let userId = ''
+    const userData = await resUserId.json();
+    userData.forEach(user => {
+      if(user.name === tokenData.name) userId = user._id
+    })
+      // .then(res => res.json())
+      // .then(datas => datas.forEach(data => data._id))
+
+
+    // 로그인한 유저 퀴즈 정보 업데이트
+    const resQuiz = await fetch(`/api/user/${userId}/quiz`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "isSolved" : true, 
+        "score" : score, 
+        "corrected" : corrected
+      }),
+    })
+    const quizData = await resQuiz.json()
+
+    // 각 퀴즈 정/오답 정보 업데이트
+    const resQuizzes = await fetch(`/api/quiz`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "update" : quizzesInfo
+      })
+    })
+    const quizzezData = await resQuizzes.json()
+  } //aa()
+  
+  async function bb() {
+    //정답률
+    const resPerentage = await fetch(`/api/quiz/quizzes`, {
+      method: 'GET'
+    })
+    const percentageData = await resPerentage.json()
+    // percentageData.forEach(each => {
+    //   let eachPer = (Math.round(((each.corrected)/(each.solved))*100)) / 100
+    //   console.log(datas[arr[number]].quizNumber)
+    //   console.log(each.quizNumber)
+    //   if(each.quizNumber === datas[arr[number]].quizNumber){
+    //     console.log(Number(each.corrected))
+    //   }
+    // })
+    
+    for(let i=0; i<percentageData.length; i++){
+      let eachPer = (Math.round(((percentageData[i].corrected)/(percentageData[i].solved))*100))
+      if(percentageData[i].quizNumber === datas[arr[number]].quizNumber && eachPer !== NaN){
+        setPercentage(eachPer)
+      }
+      else if(percentageData[i].quizNumber === datas[arr[number]].quizNumber && eachPer === NaN){
+        setPercentage(0)
+      }
+    }
+  }
+  bb()
+
+  if (number2 > 25 && bestScore <= score) {
     document.querySelector('.popup').style.display = "block"
+    document.querySelector('.bestPopup').style.display = "block"
+  }
+  else if (number2 > 25 && bestScore > score) {
+    document.querySelector('.popup').style.display = "block"
+    document.querySelector('.normalPopup').style.display = "block"
   }
   
 
@@ -164,10 +290,10 @@ const Quiz = () => {
               <QuestionArea dangerouslySetInnerHTML={ {__html: datas[arr[number]].question} } ></QuestionArea>
               <LeftInfo>
                 <p className='level'>Level : {datas[arr[number]].level}</p>
-                <p className='persentage'>정답률 : 100%</p>
+                <p className='persentage'>정답률 : {percentage}%</p>
               </LeftInfo>
               <BestScore>
-                <p className='bestScore'>Best Score : <span>25</span> </p>
+                <p className='bestScore'>Best Score : <span>{bestScore}</span> </p>
                 <p className='yourScore'>Your Score : <span>{score}</span> </p>
               </BestScore>
             </Left>
@@ -195,18 +321,18 @@ const Quiz = () => {
             </Right>
           </Section>
           <Popup className='popup'>
-            <div className='normalPopup' style={{display:'none'}}>
+            <NormalPopup className='normalPopup'>
               <p className='text1'>Well done!</p>
               <p className='text2' style={{marginTop:'10px'}}>Your score : {score}</p>
               <p className='text3'>점수 랭킹은 각 서비스 이용자들의 첫 문제풀이 점수로 반영됩니다.</p>
               <a href="">Play Again</a>
-            </div>
-            <div className='bestPopup'>
+            </NormalPopup>
+            <BestPopup className='bestPopup'>
               <p className='text1'>Conglatulation!</p>
               <p className='text2'>Your score : {score}</p>
               <p className='text3' style={{color:'black', fontSize:'1.2rem'}}>최고 점수 달성!</p>
               <a href="">Play Again</a>
-            </div>
+            </BestPopup>
           </Popup>
         </Main>
         <ul className="circles">
@@ -244,7 +370,7 @@ export default Quiz
 
 
 const Main = styled.div`
-  width:1000px;
+  // width:1000px;
   margin:0 auto;
   display:flex;
   height:100%;
@@ -473,21 +599,25 @@ const Example = styled.button`
   }
 `
 const Popup = styled.div`
-  width:500px;
-  height:300px;
   position:fixed;
-  left:calc(50% - 250px);
-  top:calc(50% - 150px);
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,.3);
   display:none;
 
   div {
-    height:100%;
+    width:500px;
+    height:300px;
+    position:fixed;
+    left:calc(50% - 250px);
+    top:calc(50% - 150px);
     background-color:white;
     border-radius:10px;
     box-shadow:0 0 20px rgba(0,0,0,.3);
     padding:30px;
     text-align:center;
     box-sizing:border-box;
+    display:none;
   }
   p {
     margin:0;
@@ -526,7 +656,12 @@ const Popup = styled.div`
     background-image: linear-gradient(147deg, #e0c3fc 0%, #8ec5fc 74%);
   }
 `
+const NormalPopup = styled.div`
 
+`
+const BestPopup = styled.div`
+
+`
 
 
 

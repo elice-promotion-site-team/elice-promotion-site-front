@@ -241,62 +241,62 @@
       "quizNumber" : 19
     },
     {
-      "question" : "1111",
+      "question" : "자바스크립트 변수 정의 과정에 대해 옳지 않은 것을 고르세요.",
       "example" : [
-        "111",
-        "222",
-        "333",
-        "444"
+        "실행 컨텍스트 생성 단계에서, 자바스크립트 엔진은 변수 선언을 읽어 변수를 실행 컨텍스트에 저장한다.",
+        "실행 컨텍스트 실행 단계에서, 자바스크립트 엔진은 변수 할당 구문을 읽어 실행 컨텍스트에 저장된 변수에 값을 저장한다.",
+        "함수 선언문은 생성 단계에서 함수명만 저장된다.",
+        "실행 컨텍스트 실행 단계에서, 자바스크립트 엔진이 변수명을 읽으면 렉시컬 환경에서 값을 읽는다."
       ],
-      "answer": 2,
-      "level" : "easy",
+      "answer": 3,
+      "level" : "normal",
       "quizNumber" : 21
     },
     {
-      "question" : "1111",
+      "question" : "전역 객체에 대한 내용으로 옳은 것을 고르세요.",
       "example" : [
-        "111",
-        "222",
-        "333",
-        "444"
+        "자바스크립트 실행 환경에 따른 전역 객체는 모두 같다.",
+        "브라우저 환경은 globalThis와 window가 다르다.",
+        "document 객체는 DOM 노드를 생성할 수 있다.",
+        "-"
       ],
-      "answer": 2,
+      "answer": 3,
       "level" : "easy",
       "quizNumber" : 22
     },
     {
-      "question" : "1111",
+      "question" : "자바스크립트 제어 흐름에 관한 설명으로 옳지 않은 것을 고르세요.",
       "example" : [
-        "111",
-        "222",
-        "333",
-        "444"
+        "자바스크립트 엔진은 하나의 메인 스레드로 구성된다.",
+        "메인 스레드를 긴 시간 점유하면, 그동안 프로그램은 멈춘다.",
+        "비동기적 제어 흐름의 경우, 현재 실행 중인 코드 외에 다른 작업이 실행될 수 있다.",
+        "비동기 작업이 실행되는 동안, 메인 스레드는 멈춰있다."
       ],
-      "answer": 2,
+      "answer": 4,
       "level" : "normal",
       "quizNumber" : 23
     },
     {
-      "question" : "1111",
+      "question" : "CSS Transform 관련 속성에 대한 설명으로 옳은 것으로 고르세요.",
       "example" : [
-        "111",
-        "222",
-        "333",
-        "444"
+        "rotate(45deg) 는 45px만큼 확대한다는 의미이다.",
+        "rotate()의 입력 값은 양수만 입력 가능하다.",
+        ".elice는 id 선택자를 사용했다.",
+        "scale(2, 3) 은 width를 2배, height를 3배 확대한다는 의미이다."
       ],
-      "answer": 2,
-      "level" : "normal",
+      "answer": 4,
+      "level" : "easy",
       "quizNumber" : 24
     },
     {
-      "question" : "1111",
+      "question" : "다음 중 MongoDB의 개념에 대한 설명으로 올바르지 않은 것은?",
       "example" : [
-        "111",
-        "222",
-        "333",
-        "444"
+        "Database는 Collection이 저장되는 저장소이다.",
+        "Collection은 Document가 저장되는 공간이다.",
+        "Document는 MongoDB에 저장되는 데이터이다.",
+        "ObjectID는 하나씩 숫자가 증가하는 primary key이다."
       ],
-      "answer": 2,
+      "answer": 4,
       "level" : "hard",
       "quizNumber" : 25
     }
