@@ -41,7 +41,7 @@
   right: 35px;
   color: var(--sub-color);
   cursor: pointer;
-  z-index: 100;
+  z-index: 9999;
   display: flex;
 }
 .burger i:nth-of-type(1) {
@@ -60,7 +60,7 @@
   display: block;
 }
 .navbar {
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -71,7 +71,7 @@
   transition: 0.5s ease all;
 }
 .login {
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   right: 65px;
   bottom: 65px;
