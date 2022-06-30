@@ -83,6 +83,19 @@ const GuestBook = () => {
     refleshHandler();
   };
 
+  const deleteHandler = async (e) => {
+    const askToDelete = window.confirm('정말 삭제하시겠습니까 ?');
+
+    if (askToDelete) {
+      const id = e.target.value;
+      const res = await fetch(`http://localhost:3001/api/guestbook/${id}`, {
+        method: 'DELETE',
+      });
+      await res.json();
+    }
+    refleshHandler();
+  };
+
   //구글 로그인
   const login = async () => {
     if (!cookies.token) {
@@ -206,7 +219,13 @@ const GuestBook = () => {
                           수정
                         </Button>
                       )}
-                      <Button name="delete" variant="outlined" style={{ float: 'right' }} value={comment._id}>
+                      <Button
+                        name="delete"
+                        variant="outlined"
+                        style={{ float: 'right' }}
+                        onClick={deleteHandler}
+                        value={comment._id}
+                      >
                         삭제
                       </Button>
                     </div>
