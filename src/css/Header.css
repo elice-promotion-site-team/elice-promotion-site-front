@@ -4,6 +4,13 @@
   --sub2-color: #54b3d6;
   --error-color: #e63946;
 }
+@font-face {
+  font-family: 'LeferiPoint-BlackObliqueA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .login,
 .navbar .nav-links li:nth-of-type(1),
@@ -35,15 +42,28 @@
   transition: 0.3s ease all;
 }
 
+.headerTitle,
 .burger {
   position: fixed;
   top: 35px;
-  right: 35px;
   color: var(--sub-color);
   cursor: pointer;
   z-index: 9999;
   display: flex;
 }
+.headerTitle {
+  left: 35px;
+}
+.headerTitle a {
+  text-decoration: none;
+  font-size: 2.4rem;
+  font-family: 'LeferiPoint-BlackObliqueA';
+  font-style: italic;
+}
+.burger {
+  right: 35px;
+}
+
 .burger i:nth-of-type(1) {
   display: block;
 }
@@ -168,7 +188,8 @@
 	width: 100%;
 } */
 
-.navbar.nav-open, .login.nav-link-open{
+.navbar.nav-open,
+.login.nav-link-open {
   display: block;
   clip-path: circle(100%);
 }
