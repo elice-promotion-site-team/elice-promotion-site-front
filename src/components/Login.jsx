@@ -8,7 +8,7 @@ const GoogleAuth = () => {
   const [cookies, removeCookie] = useCookies(['token']);
 
   const googleLoginSuccess = () => {
-    if (!cookies.token) window.open('http://localhost:3001/auth/google', '_blank');
+    if (!cookies.token) window.location.href = '/auth/google';
   };
 
   //   const logout = () => {
