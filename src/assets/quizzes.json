@@ -1,0 +1,307 @@
+{
+  "data" : [
+    {
+      "question" : "다음 중 정적 웹과 동적 웹에 대한 설명으로 올바르지 않은 것은?",
+      "example" : [
+        "정적 웹은 단방향 통신으로, link를 통한 페이지 이동이 가능하다.",
+        "동적 웹은 양방향 통신으로 사용자와 상호작용을 한다.",
+        "동적 웹은 단일 html 파일로 주로 동작한다.",
+        "프론트엔드와 백엔드가 유기적으로 통신하는 것은 동적 웹이다."
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 1
+    },
+    {
+      "question" : "사용자 인터페이스를 만들기 위한 JavaScript 라이브러리 중 하나로, 페이스북과 인스타그램에서 개발 및 관리하고 있는 오픈 소스이기도 한 이것을 보기에서 골라주세요.",
+      "example" : [
+        "JSX",
+        "React",
+        "Component",
+        "State"
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 2
+    },
+    {
+      "question" : "아래 자바스크립트 코드를 출력했을 때 화면에 출력되는 값을 올바르게 고르세요.<br><code>var a = 15 + 20; <br>var b = '15' + '20'; <br>document.write(a + ' ' + b)</code>",
+      "example" : [
+        "35 35",
+        "35 1520",
+        "1520 35",
+        "1520 1520"
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 3
+    },
+    {
+      "question" : "미디어 쿼리 속성에 대한 설명으로 옳은 것으로 고르세요.<code>.media {<br>&nbsp;width:500px;<br>&nbsp;height:500px;<br> &nbsp;background-color:red;<br>}<br><br>@media {min-width:320px} and {max-width:800px} {<br>&nbsp;.media {<br>&nbsp;&nbsp;width:300px; <br>&nbsp;&nbsp;height:300px; <br>&nbsp;&nbsp;background-color:yellow;<br>&nbsp;}<br>}</code>",
+      "example" : [
+        "브라우저 가로폭이 최소 300px, 최대 800px이 되었을 경우, @media 중괄호 내 css 속성으로 대체한다는 의미이다.",
+        "브라우저 가로폭이 최소 320px, 최대 800px이 되었을 경우, @media 중괄호 내 css 속성으로 대체한다는 의미이다.",
+        "브라우저 가로폭이 최소 300px, 최대 300px이 되었을 경우, @media 중괄호 내 css 속성으로 대체한다는 의미이다.",
+        "브라우저 가로폭이 최소 320px, 최대 800px이 되었을 경우, @media 중괄호 내 css 속성으로 대체한다는 의미이다."
+      ],
+      "answer": 2,
+      "level" : "normal",
+      "quizNumber" : 4
+    },
+    {
+      "question" : "자바스크립트에서 일정 시간마다 반복적으로 코드를 실행하고자 할 때 사용되는 코드로 올바른 것은 무엇일까요?",
+      "example" : [
+        "setInterval()",
+        "repeat()",
+        "while()",
+        "during()"
+      ],
+      "answer": 1,
+      "level" : "easy",
+      "quizNumber" : 5
+    },
+    {
+      "question" : "this가 가리키는 것에 대한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "함수의 호출 환경에 따라 함수 내 this가 가리키는 것이 결정된다.",
+        "bind, apply, call 메서드는 함수의 this를 바꿀 수 있다.",
+        "setTimeout은 함수의 this를 바꿀 수 없다.",
+        "콜백 함수는 다른 함수의 인자로 보내지는 함수이다."
+      ],
+      "answer": 3,
+      "level" : "hard",
+      "quizNumber" : 6
+    },
+    {
+      "question" : "다음 중 실행 컨텍스트에 포함되지 않는 것을 고르세요.",
+      "example" : [
+        "스코프 체인",
+        "this 포인터",
+        "rest operator",
+        "variable objects"
+      ],
+      "answer": 3,
+      "level" : "normal",
+      "quizNumber" : 7
+    },
+    {
+      "question" : "Animation 속성에 대한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "animation-delay : 애니메이션이 끝나기 전 딜레이할 시간을 설정하는 속성",
+        "animation-timing-function : 애니메이션 속도 곡선을 제어하는 속성",
+        "animation-duration : 애니메이션이 실행되는 시간을 설정하는 속성",
+        "animation-iteration-count : 애니메이션이 재생되는 횟수를 제한하는 속성"
+      ],
+      "answer": 1,
+      "level" : "normal",
+      "quizNumber" : 8
+    },
+    {
+      "question" : "자바스크립트 코드 실행의 단계에서 발생하는 일이 알맞게 연결된 것을 고르세요.",
+      "example" : [
+        "생성 단계 - 실행 컨텍스트 생성, 변수 값 할당 / 실행 단계 - 코드 실행",
+        "생성 단계 - 실행 컨텍스트 생성 / 실행 단계 - 변수 값 할당, 코드 실행",
+        "생성 단계 - 변수 값 할당 / 실행 단계 - 실행 컨텍스트 생성, 코드 실행",
+        "생성 단계 - 코드 실행, 변수 값 할당 / 실행 단계 - 실행 컨텍스트 생성"
+      ],
+      "answer": 2,
+      "level" : "hard",
+      "quizNumber" : 9
+    },
+    {
+      "question" : "다음 State에 대한 설명 중 올바르지 않은 것을 고르세요.",
+      "example" : [
+        "State는 Component 내에서 유동적으로 변할 수 있는 값을 저장합니다.",
+        "개발자가 의도한 동작에 의해 변할 수도 있고 사용자의 입력에 따라 새로운 값으로 변경될 수도 있습니다.",
+        "State 값이 변경되면 별도로 컴포넌트를 재 렌더링하기 위한 함수를 호출합니다.",
+        "State를 변경하기 위해서는 setState 함수를 이용합니다."
+      ],
+      "answer": 3,
+      "level" : "normal",
+      "quizNumber" : 20
+    },
+    {
+      "question" : "저장소에 정보를 올리는 git명령어 중 옳은 것을 골라주세요.",
+      "example" : [
+        "git push",
+        "git push https://gitlab.com/group/project",
+        "git push origin master",
+        "git push --all"
+      ],
+      "answer": 3,
+      "level" : "easy",
+      "quizNumber" : 10
+    },
+    {
+      "question" : "이벤트(Event)에 대한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "이벤트란 자바스크립트와 같은 프로그래밍 언어가 HTML에 발생시키는 사건을 말합니다.",
+        "발생한 이벤트의 종류를 이벤트 타입이라고 합니다.",
+        "자바스크립트는 발생한 이벤트에 반응하여 특정 동작을 수행할 수 있습니다.",
+        "이벤트가 발생했을 때 그 처리를 담당하는 함수를 이벤트 핸들러라고 합니다."
+      ],
+      "answer": 1,
+      "level" : "normal",
+      "quizNumber" : 11
+    },
+    {
+      "question" : "노드(Node) 와 노드 트리에 대한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "노드란 DOM에서 정보를 저장하는 계층적 단위입니다.",
+        "노드 트리란 노드들의 집합으로, 노드 간의 관계를 나타냅니다.",
+        "노드 트리의 모든 노드는 서로 수평적 관계를 맺고 있습니다.",
+        "자바스크립트에서는 HTML DOM을 이용하여 노드 트리에 포함된 모든 노드에 접근할 수 있습니다."
+      ],
+      "answer": 3,
+      "level" : "hard",
+      "quizNumber" : 12
+    },
+    {
+      "question" : "Fetch API에 대한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "fetch() 는 프로미스를 리턴한다.",
+        "네트워크 요청 실패 시 response.ok는 false이다.",
+        "네트워크 요청 성공 시 헤더 정보를 얻을 수 있다.",
+        "Response 객체의 json() 메서드는 동기 함수이다."
+      ],
+      "answer": 4,
+      "level" : "normal",
+      "quizNumber" : 13
+    },
+    {
+      "question" : "CSS의 우선순의를 결정하는 요소가 아닌 것을 고르세요.",
+      "example" : [
+        "순서에 의한 캐스케이딩",
+        "디테일에 의산 캐스케이딩",
+        "선택자에 의한 캐스케이딩",
+        "사용자에 의한 캐스케이딩"
+      ],
+      "answer": 4,
+      "level" : "easy",
+      "quizNumber" : 14
+    },
+    {
+      "question" : "HTTP, REST API에 관한 설명으로 옳지 않은 것을 고르세요.",
+      "example" : [
+        "HTTP는 서버와 클라이언트 간 통신 방법을 정한 규약이다.",
+        "HTTP 요청 메서드는 요청에 대한 동작을 정의한다.",
+        "HTTP 응답 메세지에 헤더 정보가 포함되지 않는다.",
+        "HTTP Status는 요청의 결과를 코드로 나타낸다."
+      ],
+      "answer": 3,
+      "level" : "easy",
+      "quizNumber" : 15
+    },
+    {
+      "question" : "HTML 문서의 기본 구조 중에 들어갈 태그를 고르세요.",
+      "example" : [
+        "DOCTYPE html",
+        "!DOCTYPE html",
+        "&DOCTYPE html",
+        "DOCTYPE HTML"
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 16
+    },
+    {
+      "question" : "자바스크립트의 변수 생성에 대한 설명 중 틀린 설명을 고르세요.",
+      "example" : [
+        "변수 선언이란 데이터를 담는 공간을 생성하는 것을 말합니다.",
+        "변수 초기화란 생성된 변수에 데이터를 전달하는 것을 말합니다.",
+        "console.log(변수명);은 변수 안의 데이터를 확인할 때 사용하는 명령어입니다.",
+        "printf(변수명);은 변수의 데이터를 웹 화면에 출력할 때 사용하는 명령어입니다."
+      ],
+      "answer": 4,
+      "level" : "normal",
+      "quizNumber" : 17
+    },
+    {
+      "question" : "다음 중 Git에 대해 틀린 것을 고르세요.",
+      "example" : [
+        "Git은 여러 명이 효율적으로 협업하기 위한 툴이다.",
+        "Git은 오픈소스이므로 누구나 사용할 수 있다.",
+        "Git은 작업을 할 때 자동으로 옛 버전의 파일을 지워주기 때문에 용량을 아낄 수 있다.",
+        "Git을 사용하면 여러 버전을 동시에 관리할 수 있어 데이터의 안정성을 보장된다."
+      ],
+      "answer": 3,
+      "level" : "normal",
+      "quizNumber" : 18
+    },
+    {
+      "question" : "다음 중 Server-Side Rendering에 대한 설명으로 올바르지 않은 것은?",
+      "example" : [
+        "사이트의 변경되는 부분을 대부분 백엔드에서 처리함.",
+        "HTML 파일을 대부분 백엔드에서 작성된 채로 프론트엔드에 전달함.",
+        "CSR에 비해 페이지 로딩이 느려 보임.",
+        "페이지를 이동할 때 화면의 깜빡임이 없음."
+      ],
+      "answer": 4,
+      "level" : "hard",
+      "quizNumber" : 19
+    },
+    {
+      "question" : "1111",
+      "example" : [
+        "111",
+        "222",
+        "333",
+        "444"
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 21
+    },
+    {
+      "question" : "1111",
+      "example" : [
+        "111",
+        "222",
+        "333",
+        "444"
+      ],
+      "answer": 2,
+      "level" : "easy",
+      "quizNumber" : 22
+    },
+    {
+      "question" : "1111",
+      "example" : [
+        "111",
+        "222",
+        "333",
+        "444"
+      ],
+      "answer": 2,
+      "level" : "normal",
+      "quizNumber" : 23
+    },
+    {
+      "question" : "1111",
+      "example" : [
+        "111",
+        "222",
+        "333",
+        "444"
+      ],
+      "answer": 2,
+      "level" : "normal",
+      "quizNumber" : 24
+    },
+    {
+      "question" : "1111",
+      "example" : [
+        "111",
+        "222",
+        "333",
+        "444"
+      ],
+      "answer": 2,
+      "level" : "hard",
+      "quizNumber" : 25
+    }
+  ]
+}
+
+
+
