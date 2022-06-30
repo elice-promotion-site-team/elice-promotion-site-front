@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
   const [userId, setUserId] = useState('');
+  const [targetComment, setTargetComment] = useState('');
   const [cookies] = useCookies(['token']);
   const nameRef = useRef('');
 
@@ -58,6 +59,28 @@ const GuestBook = () => {
     evt.target.comment.value = '';
     refleshHandler();
     //}
+  };
+
+  const updateHandler = (e) => {
+    setTargetComment(e.target.value);
+  };
+
+  const updateDoneHandler = async (e) => {
+    const commentId = e.target.value;
+    //const name = e.target.parentNode.parentNode.firstChild.childNodes[0].innerHTML;
+    const comment = e.target.parentNode.parentNode.firstChild.childNodes[1].value;
+
+    const res = await fetch(`http://localhost:3001/api/guestbook/${commentId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ comment }),
+    });
+    await res.json();
+
+    setTargetComment('');
+    refleshHandler();
   };
 
   //구글 로그인
@@ -146,19 +169,43 @@ const GuestBook = () => {
                 >
                   <div>
                     <div>{comment.name}</div>
-                    <div>{comment.comment}</div>
+                    {targetComment === comment._id ? <textarea /> : <div>{comment.comment}</div>}
                     <div style={{ fontSize: '0.6rem' }}>{comment.createdAt.substr(0, 10)}</div>
                   </div>
                   {userId === comment.userId ? (
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <Button
-                        name="modify"
-                        variant="outlined"
-                        style={{ float: 'right', marginRight: '0.5rem' }}
-                        value={comment._id}
-                      >
-                        수정
-                      </Button>
+                      {targetComment === comment._id ? (
+                        <>
+                          <Button
+                            name="modify"
+                            variant="contained"
+                            style={{ float: 'right', marginRight: '0.5rem' }}
+                            onClick={updateDoneHandler}
+                            value={comment._id}
+                          >
+                            완료
+                          </Button>
+                          <Button
+                            name="modify"
+                            variant="outlined"
+                            style={{ float: 'right', marginRight: '0.5rem' }}
+                            onClick={() => setTargetComment('')}
+                            value={comment._id}
+                          >
+                            취소
+                          </Button>
+                        </>
+                      ) : (
+                        <Button
+                          name="modify"
+                          variant="outlined"
+                          style={{ float: 'right', marginRight: '0.5rem' }}
+                          onClick={updateHandler}
+                          value={comment._id}
+                        >
+                          수정
+                        </Button>
+                      )}
                       <Button name="delete" variant="outlined" style={{ float: 'right' }} value={comment._id}>
                         삭제
                       </Button>
