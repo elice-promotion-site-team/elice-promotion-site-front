@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import '../css/Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import LoginGoogle from './Login';
 
-function Burger() {
+function Header() {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const toggleNavHandler = () => {
     setNavIsOpen((prev) => !prev);
   };
 
   return (
-    <div>
+    <div className="headerContainer">
+      <div className="headerTitle">
+        <a href="/">Hello-Elice</a>
+      </div>
       <div className="burger" onClick={() => toggleNavHandler()}>
-        {navIsOpen ? <FontAwesomeIcon icon={faTimes} size='xl' color='white'/> : <FontAwesomeIcon icon={faBars} size='xl'/>}
+        {navIsOpen ? (
+          <FontAwesomeIcon icon={faTimes} size="2xl" color="white" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} size="2xl" />
+        )}
       </div>
 
       <nav className={`navbar ${navIsOpen && 'nav-open'}`}>
@@ -21,13 +29,13 @@ function Burger() {
             <a href="/trackinfo">트랙설명</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">신청방법</a>
+            <a href="/trackapply">신청방법</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">Quiz</a>
+            <a href="/quiz">Quiz</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
-            <a href="#">방명록</a>
+            <a href="/guestbook">방명록</a>
           </li>
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
             <a href="#">Contact</a>
@@ -38,9 +46,8 @@ function Burger() {
       <div className={`login ${navIsOpen && 'nav-link-open'}`}>
         <LoginGoogle />
       </div>
-      
     </div>
   );
 }
 
-export default Burger;
+export default Header;
