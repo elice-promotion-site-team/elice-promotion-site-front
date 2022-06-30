@@ -24,8 +24,11 @@ const Chat = () => {
     socket.on('update', (message) => {
       setChatArr((chatArr) => chatArr.concat(message));
     });
-    window.scrollTo(0, document.body.scrollHeight);
   }, []);
+
+  useEffect(() => {
+    messageRef.current.scrollIntoView({ behavior: 'smooth' });
+  },[chatArr])
 
   const getUser = async () => {
     if (!cookies.token) {
