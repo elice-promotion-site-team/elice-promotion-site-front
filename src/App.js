@@ -18,6 +18,7 @@ import TrackInfo from './components/TrackInfo';
 import TrackApply from './components/TrackApply';
 import GuestBook from './components/GuestBook';
 import Quiz from './components/Quiz';
+import Chat from './components/Chat';
 
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
@@ -94,6 +95,7 @@ function App() {
         <Route path="/trackapply" element={<TrackApply />} />
         <Route path="/guestbook" element={<GuestBook />} />
         <Route path="/Quiz" element={<Quiz />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );
