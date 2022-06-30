@@ -3,8 +3,7 @@ import Burger from './Burger';
 import styled from 'styled-components';
 import quizzes from '../assets/quizzes.json'
 import { useCookies } from 'react-cookie';
-
-
+import Header from './Header';
 
 let arr = []
 let quizzesInfo = []
@@ -154,9 +153,7 @@ const Quiz = () => {
   // if(number2 <= 3) { //arr.length
     return (
       <BackGround>
-        <header>
-          <Burger />
-        </header>
+        <Header></Header>
         <Main>
           <Section>
             <Left>
