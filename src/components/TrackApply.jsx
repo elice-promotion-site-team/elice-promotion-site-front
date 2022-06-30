@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import '../css/TrackApply.css';
 import logo from '../assets/elice x KDT.png';
 import trackapply from '../assets/trackapply.png';
+import Header from './Header';
 
 function TrackInfo() {
   AOS.init();
@@ -11,6 +12,7 @@ function TrackInfo() {
 
   return (
     <div className="bs-all">
+      <Header></Header>
       <div className="about">
         <div className="first">
           <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" className="first-text">

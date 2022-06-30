@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { useCookies } from 'react-cookie';
 import Nav from './Nav';
 import Button from '@mui/material/Button';
+import Header from './Header';
 
 const GuestBook = () => {
   const [comments, setComments] = useState([]);
@@ -55,9 +56,7 @@ const GuestBook = () => {
   return (
     <GuestBookContainer className="no-scroll">
       <GlobalStyle />
-      <header>
-        <Nav title="방명록" />
-      </header>
+      <Header></Header>
       <main>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <article
