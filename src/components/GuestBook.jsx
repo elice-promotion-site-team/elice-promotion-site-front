@@ -18,7 +18,7 @@ const GuestBook = () => {
 
   //전체 방명록 목록 불러와서 comments state 설정
   const refleshHandler = async () => {
-    const res = await fetch('http://localhost:3001/api/guestbook/list');
+    const res = await fetch('/api/guestbook/list');
     const data = await res.json();
     setComments(data.reverse());
 
@@ -27,7 +27,7 @@ const GuestBook = () => {
 
   const getUser = async () => {
     if (cookies.token) {
-      const res = await fetch(`http://localhost:3001/auth/${cookies.token}`);
+      const res = await fetch(`/auth/${cookies.token}`);
       const data = await res.json();
       setUserId(data._id);
       nameRef.current.value = data.name;
@@ -47,7 +47,7 @@ const GuestBook = () => {
     //   comment = i + '번째 방명록 테스트입니다.';
     //   console.log(name + ' ' + comment);
 
-    const res = await fetch('http://localhost:3001/api/guestbook', {
+    const res = await fetch('/api/guestbook', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const GuestBook = () => {
     //const name = e.target.parentNode.parentNode.firstChild.childNodes[0].innerHTML;
     const comment = e.target.parentNode.parentNode.firstChild.childNodes[1].value;
 
-    const res = await fetch(`http://localhost:3001/api/guestbook/${commentId}`, {
+    const res = await fetch(`/api/guestbook/${commentId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const GuestBook = () => {
 
     if (askToDelete) {
       const id = e.target.value;
-      const res = await fetch(`http://localhost:3001/api/guestbook/${id}`, {
+      const res = await fetch(`/api/guestbook/${id}`, {
         method: 'DELETE',
       });
       await res.json();
@@ -97,15 +97,9 @@ const GuestBook = () => {
   };
 
   //구글 로그인
-  const login = async () => {
+  const login = () => {
     if (!cookies.token) {
-      //https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=373180507864-4e0be4k09gg7kukg63ea5qe8k918j0iv.apps.googleusercontent.com
-      await window.open('http://localhost:3001/auth/google', '_blank');
-      // await window.location.replace('/guestbook'); //to do solve cors
-      //const res = await fetch('http://localhost:3001/auth/google');
-      //const data = fetch('http://localhost:3001/auth/google', { mode: 'no-cors' }).then((res) => res.json());
-      //const data = await res.json();
-      //console.log(data);
+      window.location.href = '/auth/google';
     }
     getUser();
   };
