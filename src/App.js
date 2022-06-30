@@ -17,7 +17,9 @@ import mainCategory02 from '../src/assets/main02-2.png';
 import mainCategory03 from '../src/assets/main03-2.png';
 import mainCategory04 from '../src/assets/main04-2.png';
 import TrackInfo from './components/TrackInfo';
+import TrackApply from './components/TrackApply';
 import GuestBook from './components/GuestBook';
+import Quiz from './components/Quiz';
 
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
@@ -49,14 +51,14 @@ function App() {
               </section>
               <section className="main main2">
                 <span className="cateTitle">신청방법</span>
-                <a href="/trackinfo" className="cateLink">
+                <a href="/trackapply" className="cateLink">
                   <img src={mainCategory2} className="mainct" alt="신청방법" />
                   <img src={mainCategory02} className="mainct hoverImg" alt="신청방법" />
                 </a>
               </section>
               <section className="main main3">
                 <span className="cateTitle">이벤트</span>
-                <a href="/trackinfo" className="cateLink">
+                <a href="/Quiz" className="cateLink">
                   <img src={mainCategory3} className="mainct" alt="이벤트" />
                   <img src={mainCategory03} className="mainct hoverImg" alt="이벤트" />
                 </a>
@@ -93,7 +95,9 @@ function App() {
           }
         ></Route>
         <Route path="/trackinfo" element={<TrackInfo />} />
+        <Route path="/trackapply" element={<TrackApply />} />
         <Route path="/guestbook" element={<GuestBook />} />
+        <Route path="/Quiz" element={<Quiz />} />
       </Routes>
     </Router>
   );
