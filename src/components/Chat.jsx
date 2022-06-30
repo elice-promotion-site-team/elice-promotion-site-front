@@ -27,6 +27,12 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
+    return () => {
+      socket.close();
+    };
+  }, []);
+  
+  useEffect(() => {
     messageRef.current.scrollIntoView({ behavior: 'smooth' });
   },[chatArr])
 
