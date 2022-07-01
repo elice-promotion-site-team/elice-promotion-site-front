@@ -132,11 +132,14 @@ const Quiz = () => {
   let datasIndex = datas[arr[number]]
   //로그인
   const [cookies] = useCookies(['token']);
+  useEffect(() => {
   if (!cookies.token) {
-    // alert('로그인 해주세요.')
+    alert('로그인 해주세요.')
     window.location.href = '/auth/google'
   };
   // console.log(cookies.token)
+  }, [])
+  
 
   const checkAnswer = (num) => {
     if(number2 <= arr.length) { // arr.length
