@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import io from 'socket.io-client';
+import '../css/Chat.css';
 
 const socket = io.connect('http://localhost:3001', { autoConnect: true, transports: ['websocket'] });
 
@@ -65,20 +66,16 @@ const Chat = () => {
 
   return (
     <div className="App">
-      <div className="Box">
-        <div className="ChatBox">
-          {chatArr.map((chatmsg, index) => (
-            <div className="Chat" key={index}>
-              <div>{chatmsg.name}</div>
-              <div className="ChatLog">{chatmsg.msg}</div>
-              <div className="ChatLog">{chatmsg.time}</div>
-            </div>
-          ))}
-        </div>
-        <div className="InputBox">
-          <input ref={messageRef} placeholder="내용" onChange={changeMessage}></input>
-          <button onClick={buttonHandler}>등록</button>
-        </div>
+      <ul id="messages">
+        {chatArr.map((chatmsg, index) => (
+          <li key={index}>
+            {chatmsg.msg} {chatmsg.time}
+          </li>
+        ))}
+      </ul>
+      <div id="form">
+        <input id="input" ref={messageRef} placeholder="내용" onChange={changeMessage}></input>
+        <button onClick={buttonHandler}>등록</button>
       </div>
     </div>
   );
