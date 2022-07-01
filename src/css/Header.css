@@ -79,6 +79,11 @@
 .burger.burger-open i:nth-of-type(2) {
   display: block;
 }
+
+.chatting {
+  right: 85px;
+}
+
 .navbar {
   z-index: 999;
   position: fixed;
