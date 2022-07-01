@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import io from 'socket.io-client';
-io({ transports: ['polling', 'websocket'] });
-const socket = io.connect('http://localhost:3001', {
-  cors: { origin: '*' },
-});
+
+const socket = io.connect('http://localhost:3001', { autoConnect: true, transports: ['websocket'] });
 
 const Chat = () => {
   const [cookies] = useCookies(['token']);
@@ -31,30 +29,25 @@ const Chat = () => {
       socket.close();
     };
   }, []);
-  
+
   useEffect(() => {
     messageRef.current.scrollIntoView({ behavior: 'smooth' });
-  },[chatArr])
+  }, [chatArr]);
 
-  const getUser = async () => {
-    if (!cookies.token) {
-      alert('로그인이 필요한 페이지입니다.');
-      window.location.href = '/auth/google';
-    }
-    const res = await fetch(`auth/${cookies.token}`);
-    const data = await res.json();
-    const name = data.name;
-    console.log(name);
-    setName(name);
+  const getUser = () => {
+    //console.log('user_name : ' + cookies.user_name);
+    const user_name = cookies.user_name;
 
     socket.on('connect', () => {
-      socket.emit('newUser', name);
+      //console.log('connect : ' + user_name);
+      socket.emit('newUser', user_name);
     });
+
+    setName(cookies.user_name);
   };
   const getData = async () => {
     const rawChatInfo = await fetch(`api/chat`);
     const chatInfo = await rawChatInfo.json();
-    console.log(chatInfo);
     setChatArr(chatInfo);
   };
 
