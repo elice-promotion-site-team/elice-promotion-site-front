@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
 import curriculumImage from '../assets/track_info/curriculum.png';
+import Header from './Header';
+
 const TrackInfo = () => {
   return (
     <div>
-      <header>
-        <Nav title="경력에 필요한 경험을 쌓는 길" />
-      </header>
+      <Header></Header>
       <main>
         <section>
           <Video id="bTwIg8RIj0g" />

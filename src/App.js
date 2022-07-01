@@ -1,11 +1,9 @@
 // import { useEffect } from 'react';
 // import axios from 'axios';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Nav from './components/Nav';
-import Hamburger from './components/Hamburger';
-import Burger from './components/Burger';
+import Header from './components/Header';
 
 import mainBackground from '../src/assets/main_background.png';
 import mainCategory1 from '../src/assets/main01-1.png';
@@ -17,6 +15,10 @@ import mainCategory02 from '../src/assets/main02-2.png';
 import mainCategory03 from '../src/assets/main03-2.png';
 import mainCategory04 from '../src/assets/main04-2.png';
 import TrackInfo from './components/TrackInfo';
+import TrackApply from './components/TrackApply';
+import GuestBook from './components/GuestBook';
+import Quiz from './components/Quiz';
+import Chat from './components/Chat';
 
 function App() {
   //backend src/server.js와 연결된 data를 가져옴
@@ -36,33 +38,31 @@ function App() {
           path="/"
           element={
             <div className="mainContainer">
-              {/* <Nav title="Elice Promotion Site" /> */}
-              {/* <Hamburger /> */}
-              <Burger />
-              <section className='main main1'>
+              <Header></Header>
+              <section className="main main1">
                 <span className="cateTitle">트랙소개</span>
                 <a href="/trackinfo" className="cateLink">
                   <img src={mainCategory1} className="mainct" alt="트랙소개" />
                   <img src={mainCategory01} className="mainct hoverImg" alt="트랙소개" />
                 </a>
               </section>
-              <section className='main main2'>
+              <section className="main main2">
                 <span className="cateTitle">신청방법</span>
-                <a href="/trackinfo" className="cateLink">
+                <a href="/trackapply" className="cateLink">
                   <img src={mainCategory2} className="mainct" alt="신청방법" />
                   <img src={mainCategory02} className="mainct hoverImg" alt="신청방법" />
                 </a>
               </section>
-              <section className='main main3'>
-                <span className="cateTitle">이벤트</span>
-                <a href="/trackinfo" className="cateLink">
-                  <img src={mainCategory3} className="mainct" alt="이벤트" />
-                  <img src={mainCategory03} className="mainct hoverImg" alt="이벤트" />
+              <section className="main main3">
+                <span className="cateTitle">퀴즈풀이</span>
+                <a href="/Quiz" className="cateLink">
+                  <img src={mainCategory3} className="mainct" alt="Quiz" />
+                  <img src={mainCategory03} className="mainct hoverImg" alt="Quiz" />
                 </a>
               </section>
-              <section className='main main4'>
+              <section className="main main4">
                 <span className="cateTitle">방명록</span>
-                <a href="/trackinfo" className="cateLink">
+                <a href="/guestbook" className="cateLink">
                   <img src={mainCategory4} className="mainct" alt="방명록" />
                   <img src={mainCategory04} className="mainct hoverImg" alt="방명록" />
                 </a>
@@ -92,6 +92,10 @@ function App() {
           }
         ></Route>
         <Route path="/trackinfo" element={<TrackInfo />} />
+        <Route path="/trackapply" element={<TrackApply />} />
+        <Route path="/guestbook" element={<GuestBook />} />
+        <Route path="/Quiz" element={<Quiz />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );
@@ -99,45 +103,43 @@ function App() {
 
 export default App;
 
-window.onload = function(){
+window.onload = function () {
   const elm = document.querySelectorAll('.main');
   const elmCount = elm.length;
-  elm.forEach(function(item, index){
-    item.addEventListener('mousewheel', function(event){
+  elm.forEach(function (item, index) {
+    item.addEventListener('mousewheel', function (event) {
       event.preventDefault();
       let delta = 0;
 
       if (!event) event = window.event;
       if (event.wheelDelta) {
-          delta = event.wheelDelta / 120;
-          if (window.opera) delta = -delta;
-      } 
-      else if (event.detail)
-          delta = -event.detail / 3;
+        delta = event.wheelDelta / 120;
+        if (window.opera) delta = -delta;
+      } else if (event.detail) delta = -event.detail / 3;
 
       let moveTop = window.scrollY;
       let elmSelector = elm[index];
 
       // wheel down : move to next section
-      if (delta < 0){
-        if (elmSelector !== elmCount-1){
-          try{
+      if (delta < 0) {
+        if (elmSelector !== elmCount - 1) {
+          try {
             moveTop = window.pageYOffset + elmSelector.nextElementSibling.getBoundingClientRect().top;
-          }catch(e){}
+          } catch (e) {}
         }
       }
-      
+
       // wheel up : move to previous section
-      else{
-        if (elmSelector !== 0){
-          try{
+      else {
+        if (elmSelector !== 0) {
+          try {
             moveTop = window.pageYOffset + elmSelector.previousElementSibling.getBoundingClientRect().top;
-          }catch(e){}
+          } catch (e) {}
         }
       }
 
       const body = document.querySelector('html');
-      window.scrollTo({top:moveTop, left:0, behavior:'smooth'});
+      window.scrollTo({ top: moveTop, left: 0, behavior: 'smooth' });
     });
   });
-}
+};
