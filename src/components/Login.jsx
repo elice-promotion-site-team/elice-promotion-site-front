@@ -2,13 +2,13 @@ import React from 'react';
 import { useCookies } from 'react-cookie';
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightToBracket, faUnlockKeyhole } from '@fortawesome/free-solid-svg-icons';
 
 const GoogleAuth = () => {
   const [cookies, removeCookie] = useCookies(['token']);
 
   const googleLoginSuccess = () => {
-    if (!cookies.token) window.open('http://localhost:3001/auth/google', '_blank');
+    if (!cookies.token) window.location.href = '/auth/google';
   };
 
   //   const logout = () => {
@@ -22,7 +22,7 @@ const GoogleAuth = () => {
   return (
     <>
       <Button name="login" onClick={googleLoginSuccess}>
-        <FontAwesomeIcon icon={faArrowRightToBracket} size="2xl" color="white" />
+        <FontAwesomeIcon icon={faUnlockKeyhole} size="2xl" color="white" /><span style={{color:'white', marginLeft:'10px', fontSize:'1.3rem', fontWeight:'bold', marginBottom:'-7px'}}>로그인</span>
       </Button>
       {/* {!cookies.token === null ? (
         <Button name="login" onClick={googleLoginSuccess}>

@@ -54,10 +54,10 @@ function App() {
                 </a>
               </section>
               <section className="main main3">
-                <span className="cateTitle">이벤트</span>
+                <span className="cateTitle">퀴즈풀이</span>
                 <a href="/Quiz" className="cateLink">
-                  <img src={mainCategory3} className="mainct" alt="이벤트" />
-                  <img src={mainCategory03} className="mainct hoverImg" alt="이벤트" />
+                  <img src={mainCategory3} className="mainct" alt="Quiz" />
+                  <img src={mainCategory03} className="mainct hoverImg" alt="Quiz" />
                 </a>
               </section>
               <section className="main main4">

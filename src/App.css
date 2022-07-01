@@ -50,7 +50,7 @@ body, html, #root {
   bottom:30px;
   transform:translate(-50%,0);
   display: inline-block;
-  width:800px;
+  width:700px;
   height: auto;
   transition: .2s;
 } 
