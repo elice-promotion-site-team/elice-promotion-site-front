@@ -72,7 +72,7 @@ const GuestBook = () => {
     const comment = e.target.parentNode.parentNode.firstChild.childNodes[1].value;
 
     const res = await fetch(`/api/guestbook/${commentId}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
