@@ -7,8 +7,13 @@ import { faArrowRightToBracket, faUnlockKeyhole } from '@fortawesome/free-solid-
 const GoogleAuth = () => {
   const [cookies, removeCookie] = useCookies(['token']);
 
-  const googleLoginSuccess = () => {
-    if (!cookies.token) window.location.href = '/auth/google';
+  const loginLogout = (e) => {
+    e.preventDefault();
+    if (!cookies.token || cookies.token === 'undefined') window.location.href = '/auth/google';
+    else {
+      removeCookie(['token']);
+      window.location.href = '/';
+    }
   };
 
   //   const logout = () => {
@@ -21,8 +26,13 @@ const GoogleAuth = () => {
 
   return (
     <>
-      <Button name="login" onClick={googleLoginSuccess}>
-        <FontAwesomeIcon icon={faUnlockKeyhole} size="2xl" color="white" /><span style={{color:'white', marginLeft:'10px', fontSize:'1.3rem', fontWeight:'bold', marginBottom:'-7px'}}>로그인</span>
+      <Button name="login" onClick={loginLogout}>
+        <FontAwesomeIcon icon={faUnlockKeyhole} size="2xl" color="white" />
+        <span
+          style={{ color: 'white', marginLeft: '10px', fontSize: '1.3rem', fontWeight: 'bold', marginBottom: '-7px' }}
+        >
+          {!cookies.token || cookies.token === 'undefined' ? '로그인' : '로그아웃'}
+        </span>
       </Button>
       {/* {!cookies.token === null ? (
         <Button name="login" onClick={googleLoginSuccess}>
