@@ -64,6 +64,12 @@ const Chat = () => {
     setChat({ name, msg: e.target.value });
   };
 
+  const enterKeyHandler = () => {
+    if (window.event.keyCode === 13) {
+      buttonHandler();
+    }
+  };
+
   return (
     <div className="App">
       <ul id="messages">
@@ -74,7 +80,14 @@ const Chat = () => {
         ))}
       </ul>
       <div id="form">
-        <input id="input" ref={messageRef} placeholder="내용" onChange={changeMessage}></input>
+        <input
+          type="text"
+          id="input"
+          ref={messageRef}
+          placeholder="내용"
+          onChange={changeMessage}
+          onKeyUp={enterKeyHandler}
+        ></input>
         <button onClick={buttonHandler}>등록</button>
       </div>
     </div>
