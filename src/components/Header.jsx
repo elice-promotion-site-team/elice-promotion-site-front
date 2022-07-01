@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../css/Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faComments } from '@fortawesome/free-solid-svg-icons';
 import LoginGoogle from './Login';
 
 function Header() {
@@ -9,11 +9,26 @@ function Header() {
   const toggleNavHandler = () => {
     setNavIsOpen((prev) => !prev);
   };
+  
+  const openChatWindow = () => {
+    //만들 팝업창 상하좌우 크기의 1/2 만큼 보정값으로 빼주었음
+    const popupX = (document.body.offsetWidth / 2) - (500 / 2);
+    const popupY= (window.screen.height / 2) - (700 / 2);
+    const option = `status=no, height=700, width=500, left=${popupX}  top=${popupY}`
+    window.open('/chat', 'popup', option)
+  }
 
   return (
     <div className="headerContainer">
       <div className="headerTitle">
         <a href="/">Hello-Elice</a>
+      </div>
+      <div className="burger chatting" onClick={openChatWindow}>
+        {navIsOpen ? (
+          <FontAwesomeIcon icon={faComments} size="2xl" color="white" />
+        ) : (
+          <FontAwesomeIcon icon={faComments} size="2xl" />
+        )}
       </div>
       <div className="burger" onClick={() => toggleNavHandler()}>
         {navIsOpen ? (
