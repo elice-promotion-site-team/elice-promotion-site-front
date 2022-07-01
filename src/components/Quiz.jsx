@@ -231,6 +231,7 @@ const Quiz = () => {
     })
     const quizzezData = await resQuizzes.json()
   } //aa()
+  aa()
   
   async function bb() {
     //정답률
@@ -345,7 +346,7 @@ const Quiz = () => {
   // }
   // else {
     
-  //   aa();
+  //   ;
 
   //   // const res1 = Api.patch('/api/quiz', quizzesInfo);
   //   // const res = await Api.patch('/api/quiz', quizzesInfo);
