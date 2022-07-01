@@ -72,38 +72,12 @@ const datas = quizzes.data.map((data) => {
   return data
 })
 
-for(let i=0; i<datas.length; i++){
-  let randomNum = Math.floor(Math.random()*Number(datas.length))
+for(let i=0; i<25; i++){
+  let randomNum = Math.floor(Math.random()*25)
   if(arr.indexOf(randomNum) === -1) arr.push(randomNum)
   else i--
 }
 arr.push(0)
-
-// // 퀴즈 불러오기
-// let arr2 = []
-// async function allQuizzes() {
-
-//   const resAllQuizzes = await fetch(`/api/quiz/quizzes`, {
-//     method: 'GET'
-//   })
-//   const allQuizzesData = await resAllQuizzes.json()
-//   const datas2 = allQuizzesData.map(data => {
-//     return data
-//   })
-//   // console.log(datas2.length)
-  
-//   for(let i=0; i<datas2.length; i++){
-//     let randomNum2 = Math.floor(Math.random()*Number(datas2.length))
-//     if(arr2.indexOf(randomNum2) === -1) arr2.push(randomNum2)
-//     else i--
-//   }
-//   arr2.push(0)
-//   // console.log(arr2)
-
-// }
-// allQuizzes()
-
-
 
 const Quiz = () => {
   
@@ -114,7 +88,7 @@ const Quiz = () => {
   const [corrected, setCorrected] = useState(0)
   const [bestScore , setBestScore] = useState(0)
   const [percentage , setPercentage] = useState(0)
-  const [arr3, setArr3] = useState(0)
+  const [datasIndex2, setDatasIndex2] = useState({})
 
   let userInfo = {"isSolved":true, "score":{score}, "corrected": {corrected}}
 
@@ -125,8 +99,20 @@ const Quiz = () => {
   // const [allQuizLevel , setAllQuizLevel] = useState([])
 
   
-
-
+// 퀴즈 불러오기
+  // async function allQuizzes() {
+  //   const resAllQuizzes = await fetch(`/api/quiz/quizzes`, {
+  //     method: 'GET'
+  //   })
+  //   const allQuizzesData = await resAllQuizzes.json()
+  //   const datas2 = allQuizzesData.map(data => {
+  //     return data
+  //   })
+  //   // console.log(datas2.length)
+  //   setDatasIndex2(datas2[arr[number]])
+    
+  // }
+  // allQuizzes()
   
   // 최고점수 불러오기
   var allScore = []
@@ -143,7 +129,7 @@ const Quiz = () => {
   }
   whatIsBestScore()
   
-
+  let datasIndex = datas[arr[number]]
   //로그인
   const [cookies] = useCookies(['token']);
   if (!cookies.token) {
@@ -165,29 +151,29 @@ const Quiz = () => {
       setCorrected(corrected + 1);
       document.querySelector(`.question${num}`).style.backgroundColor = "green"
       document.querySelectorAll(`.question`).forEach(e => e.disabled = true)
-      quizzesInfo.push({"quizNumber" : datas[arr[number]].quizNumber, "result": true})
+      quizzesInfo.push({"quizNumber" : datasIndex.quizNumber, "result": true})
       setTimeout(() => {
         document.querySelector(`.question${num}`).style.backgroundColor = "white"
         document.querySelectorAll(`.question`).forEach(e => e.disabled = false)
       },1000)
     }
 
-    if(num === datas[arr[number]].answer && datas[arr[number]].level === "easy" && number2 <= 3) {
+    if(num === datasIndex.answer && datasIndex.level === "easy" && number2 <= arr.length) {
       setScore(score + 3);
       ifSolved()
     }
-    else if (num === datas[arr[number]].answer && datas[arr[number]].level === "normal" && number2 <= 3){
+    else if (num === datasIndex.answer && datasIndex.level === "normal" && number2 <= arr.length){
       setScore(score + 4);
       ifSolved()
     }
-    else if (num === datas[arr[number]].answer && datas[arr[number]].level === "hard" && number2 <= 3){
+    else if (num === datasIndex.answer && datasIndex.level === "hard" && number2 <= arr.length){
       setScore(score + 6);
       ifSolved()
     }
     else {
       document.querySelector(`.question${num}`).style.backgroundColor = "red"
       document.querySelectorAll(`.question`).forEach(e => e.disabled = true)
-      quizzesInfo.push({"quizNumber" : datas[arr[number]].quizNumber, "result": false})
+      quizzesInfo.push({"quizNumber" : datasIndex.quizNumber, "result": false})
       setTimeout(() => {
         document.querySelector(`.question${num}`).style.backgroundColor = "white"
         document.querySelectorAll(`.question`).forEach(e => e.disabled = false)
@@ -251,19 +237,19 @@ const Quiz = () => {
     const percentageData = await resPerentage.json()
     // percentageData.forEach(each => {
     //   let eachPer = (Math.round(((each.corrected)/(each.solved))*100)) / 100
-    //   console.log(datas[arr[number]].quizNumber)
+    //   console.log(datasIndex.quizNumber)
     //   console.log(each.quizNumber)
-    //   if(each.quizNumber === datas[arr[number]].quizNumber){
+    //   if(each.quizNumber === datasIndex.quizNumber){
     //     console.log(Number(each.corrected))
     //   }
     // })
     
     for(let i=0; i<percentageData.length; i++){
       let eachPer = (Math.round(((percentageData[i].corrected)/(percentageData[i].solved))*100))
-      if(percentageData[i].quizNumber === datas[arr[number]].quizNumber && eachPer !== NaN){
+      if(percentageData[i].quizNumber === datasIndex.quizNumber && eachPer !== NaN){
         setPercentage(eachPer)
       }
-      else if(percentageData[i].quizNumber === datas[arr[number]].quizNumber && eachPer === NaN){
+      else if(percentageData[i].quizNumber === datasIndex.quizNumber && eachPer === NaN){
         setPercentage(0)
       }
     }
@@ -291,9 +277,9 @@ const Quiz = () => {
                 <p>Question {number2}/{datas.length}</p>
                 <progress max="100" value={progressNum}></progress>
               </ProgressBar>
-              <QuestionArea dangerouslySetInnerHTML={ {__html: datas[arr[number]].question} } ></QuestionArea>
+              <QuestionArea dangerouslySetInnerHTML={ {__html: datasIndex.question} } ></QuestionArea>
               <LeftInfo>
-                <p className='level'>Level : {datas[arr[number]].level}</p>
+                <p className='level'>Level : {datasIndex.level}</p>
                 <p className='persentage'>정답률 : {percentage}%</p>
               </LeftInfo>
               <BestScore>
@@ -306,19 +292,19 @@ const Quiz = () => {
               <div className='questions'>
                 <Example className='question question1' onClick={() => checkAnswer(1)}>
                   <span className='num'>1</span>
-                  <span className='ex'>{datas[arr[number]].example[0]}</span>
+                  <span className='ex'>{datasIndex.example[0]}</span>
                 </Example>
                 <Example className='question question2' onClick={() => checkAnswer(2)}>
                   <span className='num'>2</span>
-                  <span className='ex'>{datas[arr[number]].example[1]}</span>
+                  <span className='ex'>{datasIndex.example[1]}</span>
                 </Example>
                 <Example className='question question3' onClick={() => checkAnswer(3)}>
                   <span className='num'>3</span>
-                  <span className='ex'>{datas[arr[number]].example[2]}</span>
+                  <span className='ex'>{datasIndex.example[2]}</span>
                 </Example>
                 <Example className='question question4' onClick={() => checkAnswer(4)}>
                   <span className='num'>4</span>
-                  <span className='ex'>{datas[arr[number]].example[3]}</span>
+                  <span className='ex'>{datasIndex.example[3]}</span>
                 </Example>
               </div>
               {/* <button onClick={nextNumber}>클릭</button> */}
