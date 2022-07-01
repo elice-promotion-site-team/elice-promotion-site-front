@@ -37,9 +37,9 @@ function Header() {
           <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
             <a href="/guestbook">방명록</a>
           </li>
-          <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
+          {/* <li className={`nav-link ${navIsOpen && 'nav-link-open'}`}>
             <a href="#">Contact</a>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
