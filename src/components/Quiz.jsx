@@ -79,9 +79,34 @@ for(let i=0; i<datas.length; i++){
 }
 arr.push(0)
 
+// // 퀴즈 불러오기
+// let arr2 = []
+// async function allQuizzes() {
+
+//   const resAllQuizzes = await fetch(`/api/quiz/quizzes`, {
+//     method: 'GET'
+//   })
+//   const allQuizzesData = await resAllQuizzes.json()
+//   const datas2 = allQuizzesData.map(data => {
+//     return data
+//   })
+//   // console.log(datas2.length)
+  
+//   for(let i=0; i<datas2.length; i++){
+//     let randomNum2 = Math.floor(Math.random()*Number(datas2.length))
+//     if(arr2.indexOf(randomNum2) === -1) arr2.push(randomNum2)
+//     else i--
+//   }
+//   arr2.push(0)
+//   // console.log(arr2)
+
+// }
+// allQuizzes()
+
 
 
 const Quiz = () => {
+  
   const [number, setNumber] = useState(0);
   const [number2, setNumber2] = useState(1);
   const [progressNum, setProgressNum] = useState(100/datas.length)
@@ -90,7 +115,8 @@ const Quiz = () => {
   const [bestScore , setBestScore] = useState(0)
   const [percentage , setPercentage] = useState(0)
   const [arr3, setArr3] = useState(0)
-  // const [datas, setDatas] = useState('')
+
+  let userInfo = {"isSolved":true, "score":{score}, "corrected": {corrected}}
 
   // const [allQuizQuestion , setAllQuizQuestion] = useState('')
   // const [allQuizEx , setAllQuizEx] = useState([])
@@ -98,29 +124,7 @@ const Quiz = () => {
   // const [allQuizAnswer , setAllQuizAnswer] = useState([])
   // const [allQuizLevel , setAllQuizLevel] = useState([])
 
-  // let userInfo = {"isSolved":true, "score":{score}, "corrected": {corrected}}
-  // let arr2 = []
-  // async function allQuizzes() {
   
-  //   const resAllQuizzes = await fetch(`/api/quiz/quizzes`, {
-  //     method: 'GET'
-  //   })
-  //   const allQuizzesData = await resAllQuizzes.json()
-  //   const datas2 = allQuizzesData.map(data => {
-  //     return data
-  //   })
-  //   // console.log(datas2.length)
-    
-  //   for(let i=0; i<datas2.length; i++){
-  //     let randomNum2 = Math.floor(Math.random()*Number(datas2.length))
-  //     if(arr2.indexOf(randomNum2) === -1) arr2.push(randomNum2)
-  //     else i--
-  //   }
-  //   arr2.push(0)
-  //   console.log(arr2)
-  
-  // }
-  // allQuizzes()
 
 
   
